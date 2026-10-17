@@ -1,0 +1,97 @@
+/*=========================== FUENTES Y VARIABLES ===========================*/
+@font-face {
+  font-family: 'Anton';
+  src: url('../fonts/Anton-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  --color-light: #FFFFFF;
+  --color-dark: #000000;
+  --color-servicios-title: #42181F;
+  --color-servicios-text: #1F2263;
+
+  --color-btn-text: #D5CFC1;
+
+  --font-heading: 'Anton', sans-serif;
+  --font-body: 'JetBrains Mono', monospace;
+
+  --radius: 20px;
+}
+
+/*=========================== BASE ===========================*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--color-light);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+h1,h2,h3,h4,h5,h6,
+.brand-text {
+  font-family: var(--font-heading);
+}
+
+/*=========================== SERVICIOS ===========================*/
+.servicios-intro{
+  background-color:  var(--color-btn-text);
+  color: var(--color-servicios-text);
+
+}
+.servicios-section {
+  color: var(--color-servicios-text);
+
+}
+
+.servicios-title {
+  color: var(--color-servicios-title);
+}
+
+/*=========================== CARRUSEL ===========================*/
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+.service-img {
+  max-height: 200px;
+  object-fit: contain;
+}
+
+/*=========================== BOTÓN ===========================*/
+.btn-servicios {
+  display: inline-block;
+  border-radius: var(--radius);
+  background-color: var(--color-servicios-text);
+  color: var(--color-btn-text);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-servicios:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  box-shadow: 0 10px 20px var(--color-servicios-text);
+  color: var(--color-servicios-text);
+}

@@ -1,0 +1,329 @@
+/*=========================== FUENTES Y VARIABLES ===========================*/
+@font-face {
+  font-family: 'Anton';
+  src: url('../fonts/Anton-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  --color-dark: #000000;
+  --color-light: #FFFFFF;
+
+  --color-menu-text: #9B2226;
+  --color-scroll-track: #D5CFC1;
+
+  --font-heading: 'Anton', sans-serif;
+  --font-body: 'JetBrains Mono', monospace;
+
+  --radius: 20px;
+
+  --transition: 0.4s ease;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/*=========================== BASE ===========================*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--color-light);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,h2,h3,h4,h5,h6,
+.brand-text {
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+main {
+  padding: 0 0 80px;
+}
+
+/*=========================== HERO ===========================*/
+
+.menu-hero {
+  width: 100%;
+  margin: 0;
+  padding: 110px 20px 90px;
+  background: var(--color-menu-text);
+  color: var(--color-light);
+  text-align: center;
+}
+
+.section-title {
+  margin-bottom: 20px;
+  color: var(--color-light);
+  font-size: 60px;
+  letter-spacing: 3px;
+}
+
+.menu-hero .menu-description {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-light);
+  font-size: 1.05rem;
+}
+
+/*=========================== SECCIONES MENU ===========================*/
+
+.menu-section {
+  padding-top: 60px;
+}
+
+.menu-section h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: var(--color-menu-text);
+  font-size: 50px;
+  letter-spacing: 4px;
+}
+
+.menu-description {
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--color-dark);
+}
+
+/*=========================== SCROLL CARDS ===========================*/
+
+.cards-scroll {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 20px 10px 30px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cards-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+.cards-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-menu-text);
+  border-radius: 10px;
+}
+
+.cards-scroll::-webkit-scrollbar-track {
+  background: var(--color-scroll-track);
+}
+
+/*=========================== CARD ===========================*/
+
+.card {
+  position: relative;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: min(320px, 85vw);
+  overflow: hidden;
+  border: none;
+  border-radius: 25px;
+  background: var(--color-light);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+
+  /* Alinea el botón al fondo de cada card */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+/*=========================== CONTENIDO CARD ===========================*/
+
+.menu-item {
+  padding: 25px;
+
+  /* Ocupa todo el espacio restante y apila sus hijos en columna */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.menu-item h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: var(--color-menu-text);
+  font-size: 28px;
+}
+
+.menu-item p {
+  /* Se estira para ocupar el espacio libre, empujando el botón hacia abajo */
+  flex-grow: 1;
+  margin-bottom: 0;
+  color: var(--color-dark);
+}
+
+.menu-item span {
+  color: var(--color-dark);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/*=========================== EFECTO BRILLO ===========================*/
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg,transparent,rgba(255, 255, 255, 0.4),transparent);
+  transition: 0.7s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+/*=========================== RESPONSIVE ===========================*/
+
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 45px;
+  }
+
+  .menu-section h2 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-bottom: 60px;
+  }
+
+  .menu-hero {
+    padding: 90px 20px 70px;
+  }
+
+  .section-title {
+    font-size: 35px;
+  }
+
+  .menu-section {
+    padding-top: 40px;
+  }
+
+  .menu-section h2 {
+    font-size: 30px;
+    letter-spacing: 2px;
+  }
+
+  .menu-item {
+    padding: 20px;
+  }
+
+  .menu-item h3 {
+    font-size: 22px;
+  }
+
+  .menu-item span {
+    font-size: 20px;
+  }
+
+  .card img {
+    height: 220px;
+  }
+}
+
+/*=========================== ALERTAS ===========================*/
+
+.custom-alert {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 22px;
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  z-index: 99999;
+  animation: aparecer 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  opacity: 0.95;
+}
+
+.success {
+  background-color: #4caf50;
+}
+
+.error {
+  background-color: #e57373;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 0.95;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/*=========================== BOTON AGREGAR ===========================*/
+
+.btn-agregar {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: var(--color-menu-text);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-agregar:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}

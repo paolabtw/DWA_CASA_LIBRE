@@ -1,0 +1,64 @@
+.footer-main {
+  background-color: var(--color-hero-bg);
+  color: var(--color-dark);
+  padding: 60px 0 30px;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  box-shadow: inset 0 10px 10px -10px var(--color-dark);
+}
+
+
+.footer-heading {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.footer-links a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-dark);
+  margin-bottom: 12px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+  transform: translateX(5px);
+}
+
+.social-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-8px);
+}
+
+.social-icon img {
+  display: block;
+  width: 35px;
+}
+
+.footer-divider {
+  width: 90%;
+  margin: 30px auto;
+  opacity: 0.2;
+  border-color: var(--color-dark);
+}
+
+/*============================= PARTE RESPONSIVE =============================*/
+
+@media (max-width: 991.98px) {
+  .footer-main {
+    text-align: center;
+  }
+
+  .footer-heading {
+    margin-top: 15px;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Casa Libre | Cafetería, Cowork y Cultura en San Salvador</title>
+    <meta name="description"
+    content="Casa Libre: Un espacio para nutrir el cuerpo y el corazón. Disfruta de nuestra cafetería, área de cowork y eventos culturales en San Salvador."/>
+    <link rel="icon" href="assets/images/iconos/LogoCasaLibre.jpg" />
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+
+  <body>
+    <!--**NAVBAR**-->
+    <header>
+      <div id="navbar-placeholder"></div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+      <!-- HERO SECTION -->
+      <section class="hero-section container-fluid p-0">
+        <div class="row g-0">
+          <div class="col-lg-6 hero-video-wrapper">
+            <video class="hero-media" autoplay muted loop playsinline aria-hidden="true" poster="assets/images/iconos/HeroPreview.png">
+              <source src="assets/videos/pancake-game.mp4" type="video/mp4"/>
+            </video>
+          </div>
+          <!-- SECCION DE PAGINA DE NOSOTROS-->
+          <div class="col-lg-6 hero-content-wrapper">
+            <div class="text-center hero-content">
+              <h1 class="display-2 fw-bold mb-4">Nutriendo el cuerpo y el corazón</h1>
+              <p class="lead mb-5">Un espacio para crear, convivir y conectar con una comunidad auténtica.</p>
+              <!-- BOTON PARA PAGINA DE NOSOTROS -->
+              <a href="nosotros.html" class="btn btn-hero btn-lg px-5">Nuestra Historia</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--SECCION DE PAGINA DE MENÚ -->
+      <section class="menu-intro py-5" aria-labelledby="menu-title">
+        <div class="container text-center autoShow">
+          <h2 id="menu-title" class="display-5 fw-bold mb-3">Rico, sano y sin misterios</h2>
+          <!-- SLIDER -->
+          <div class="slider" style="--width: 360px; --height: 180px; --quantity: 5" 
+          aria-label="Galería de productos destacados">
+
+            <div class="slider-list">
+              <div class="slider-item">
+                <img src="assets/images/slider/CoffeeCup.png" alt="Taza de Café"/>
+              </div>
+
+              <div class="slider-item">
+                <img src="assets/images/slider/Hamburger.png" alt="Hamburguesa"/>
+              </div>
+
+              <div class="slider-item">
+                <img src="assets/images/slider/Fries.png" alt="Papas fritas"/>
+              </div>
+
+              <div class="slider-item">
+                <img src="assets/images/slider/Pizza.png" alt="Porción de Pizza"/>
+              </div>
+
+              <div class="slider-item">
+                <img src="assets/images/slider/Salad.png" alt="Ensalada fresca"/>
+              </div>
+
+              <!-- DUPLICADOS PARA LOOP -->
+              <div class="slider-item" aria-hidden="true">
+                <img src="assets/images/slider/CoffeeCup.png" alt="Taza de Café"/>
+              </div>
+
+              <div class="slider-item" aria-hidden="true">
+                <img src="assets/images/slider/Hamburger.png" alt="Hamburguesa"/>
+              </div>
+
+              <div class="slider-item" aria-hidden="true">
+                <img src="assets/images/slider/Fries.png" alt="Papas fritas"/>
+              </div>
+
+              <div class="slider-item" aria-hidden="true">
+                <img src="assets/images/slider/Pizza.png" alt="Porción de Pizza"/>
+              </div>
+
+              <div class="slider-item" aria-hidden="true">
+                <img src="assets/images/slider/Salad.png" alt="Ensalada fresca"/>
+              </div>
+
+            </div>
+
+          </div>
+
+          <p class="lead mb-4 mt-4">
+            Nuestra cocina trabaja con ingredientes que podés pronunciar y
+            platos que no necesitan explicación. Alimentos honestos,
+            pensados para nutrir tanto el cuerpo como el corazón.
+          </p>
+          <!--BOTON PARA PAGINA DE MENU-->
+          <a href="menu.html" class="btn btn-menu-accent px-5 py-3">EXPLORA NUESTRO MENÚ</a>
+        </div>
+      </section>
+
+      <!--SECCION DE PAGINA DE SERVICIOS -->
+      <section class="cta-servicios-section py-5">
+        <div class="container-fluid autoShow">
+          <h2 class="text-center mt-5 display-5 fw-bold mb-3">Tu espacio para crecer sin barreras</h2>
+          <hr class="mx-auto mb-5 w-25" />
+          <div class="container">
+
+            <p class="lead mb-4 mt-4 text-justify-custom">
+              Ya sea que busqués concentrarte en el co-work o aprender algo
+              nuevo en nuestros talleres, aquí el único requisito es tener
+              ganas de conectar.
+            </p>
+
+            <p class="lead mb-5 text-justify-custom">
+              Estas son solo algunas de las herramientas que ofrecemos para
+              nutrir el cuerpo y el corazón. Nuestra casita siempre tiene
+              las puertas abiertas a nuevas formas de aprendizaje y convivencia.
+            </p>
+
+          </div>
+
+          <!-- TARJETAS -->
+          <div class="row align-items-center mb-5">
+            <!-- CARD 1 -->
+            <div class="col-12 col-sm-6 col-md-3 m-auto mb-4">
+              <article class="card shadow h-100">
+                <img src="assets/images/servicios/Reposteria.png" alt="Taller de Postres" class="card-img-top"/>
+                <div class="card-body">
+
+                  <h3 class="text-center h4 fw-bold">Taller de Postres</h3>
+                  <hr class="mx-auto w-75" />
+                  <p>
+                    Aprendé a preparar dulzura real. Sin procesos ocultos ni
+                    letras pequeñas, solo recetas honestas para consentir al corazón.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="col-12 col-sm-6 col-md-3 m-auto mb-4">
+              <article class="card shadow h-100">
+                <img src="assets/images/servicios/Karaoke.png" alt="Grupo de Karaoke" class="card-img-top"/>
+                <div class="card-body">
+                  <h3 class="text-center h4 fw-bold">Grupo de Karaoke</h3>
+                  <hr class="mx-auto w-75" />
+                  <p>
+                    Aquí no buscamos estrellas, sino risas. Un punto de encuentro
+                    para convivir y alimentar el espíritu de comunidad.
+                  </p>
+                </div>
+              </article>
+            </div>
+            <!-- CARD 3 -->
+            <div class="col-12 col-sm-6 col-md-3 m-auto mb-4">
+              <article class="card shadow h-100">
+                <img src="assets/images/servicios/Dibujo.png" alt="Taller de Dibujo" class="card-img-top"/>
+
+                <div class="card-body">
+                  <h3 class="text-center h4 fw-bold">Taller de Dibujo</h3>
+                  <hr class="mx-auto w-75" />
+                  <p>Un espacio para soltar el lápiz sin miedo al juicio. Vení a desarrollar tu lado creativo en un ambiente diseñado por y para el bienestar común.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <!--BOTON PARA PAGINA DE SERVICIOS-->
+          <div class="text-center">
+            <a href="servicios.html" class="btn btn-cta-servicios px-5 py-3">CONOCE NUESTRAS HERRAMIENTAS CREATIVAS</a>
+          </div>
+        </div>
+      </section>
+
+      <!--SECCION DE PAGINA DE CONTACTO -->
+      <section class="cta-contacto-section py-5">
+        <div class="container autoShow">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6 text-center text-lg-start">
+              <h2 class="display-5 fw-bold mb-3">Te esperamos en nuestra casita</h2>
+              <p class="lead mb-4">Un lugar para crear, aprender y nutrir el corazón sin prisas ni pretensiones.</p>
+              <!-- BOTON PARA PAGINA DE CONTACTO -->
+              <a href="contacto.html"class="btn btn-cta-contacto px-5 py-3">Visítanos hoy</a>
+            </div>
+            <div class="col-lg-6 text-center">
+              <img src="assets/images/iconos/SeccionPintura.png" alt="Ilustración artística de Casa Libre"
+                class="img-fluid cta-contacto-img"/>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--**FOOTER**-->
+    <footer>
+      <div id="footer-placeholder"></div>
+    </footer>
+
+    <!--Bootstrap-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!--Carga de componentes-->
+    <script>
+      async function loadHTML(id, url) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`No se pudo cargar ${url}`);
+          }
+          const html = await response.text();
+          document.getElementById(id).innerHTML = html;
+          /*ACTIVA EL LINK ACTUAL */
+          if (id === "navbar-placeholder") {
+            activateCurrentPage();
+          }
+        } catch (error) {
+          console.error(`Error cargando ${url}:`, error);
+        }
+      }
+
+      function activateCurrentPage() {
+        const currentPage =
+          window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach(link => {
+          const linkPage = link.getAttribute("href")?.trim();
+          if (linkPage === currentPage) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+          }
+        });
+      }
+
+      loadHTML("navbar-placeholder", "navbar.html");
+      loadHTML("footer-placeholder", "footer.html");
+
+    </script>
+    <script src="js/carrito.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,179 @@
+:root {
+  --color-hero-bg: #D5CFC1;
+  --color-primary: #1D4443;
+  --color-dark: #000000;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+.navbar-custom {
+  /* Forzamos el color de fondo para que NUNCA sea transparente */
+  background-color: var(--color-hero-bg) !important; 
+  min-height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+}
+
+.brand-text {
+  color: var(--color-dark);
+  font-family: var(--font-heading); 
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-weight: 700; 
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-link {
+  color: var(--color-dark);
+  font-family: var(--font-body); 
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  position: relative;
+  transition: color var(--transition);
+  font-weight: 500;
+}
+
+/* Efecto de la línea inferior */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  height: 3px;
+  bottom: -2px; 
+  left: 0.75rem;
+  right: 0.75rem;
+  width: 0;
+  background-color: var(--color-primary);
+  transition: width var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary) !important;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: calc(100% - 1.5rem);
+}
+
+/* CARRITO */
+.btn-cart img {
+  transition: transform 0.3s ease;
+}
+
+.btn-cart:hover img {
+  transform: scale(1.1);
+}
+
+/* Ajuste para el toggler (hamburguesa) en móviles */
+.navbar-toggler {
+  border: none;
+  color: var(--color-dark);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: 2px solid var(--color-primary);
+}
+
+/* =============================================
+   TABLA DEL CARRITO - ESTILOS RESPONSIVOS
+   ============================================= */
+
+/* En pantallas pequeñas, la tabla se transforma en una vista de bloques */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: visible !important;
+  }
+
+  .table-responsive thead {
+    display: none;
+  }
+
+  .table-responsive tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .table-responsive tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .table-responsive td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0 !important;
+    border: none !important;
+    border-bottom: 1px solid #eee;
+  }
+
+  .table-responsive td:last-child {
+    border-bottom: none;
+  }
+
+  .table-responsive td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    min-width: 100px;
+    color: #1D4443;
+  }
+
+  .table-responsive td:nth-child(1)::before {
+    content: "Imagen";
+  }
+
+  .table-responsive td:nth-child(2)::before {
+    content: "Producto";
+  }
+
+  .table-responsive td:nth-child(3)::before {
+    content: "Precio";
+  }
+
+  .table-responsive td:nth-child(4)::before {
+    content: "Cantidad";
+  }
+
+  .table-responsive td:nth-child(5)::before {
+    content: "Eliminar";
+  }
+
+  .table-responsive img {
+    max-width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .table-responsive input {
+    max-width: 60px;
+  }
+
+  .table-responsive button {
+    margin-left: auto;
+  }
+
+  /* Estilos para el total y botón en móviles */
+  .modal-body .d-flex {
+    flex-direction: column !important;
+    gap: 1rem;
+  }
+
+  .modal-body .d-flex h5 {
+    width: 100%;
+    text-align: center;
+  }
+}

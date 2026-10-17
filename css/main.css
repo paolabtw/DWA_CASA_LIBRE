@@ -1,0 +1,340 @@
+/*===========================FUENTES Y VARIABLES===========================*/
+@font-face {
+  font-family: 'Anton';
+  src: url('../fonts/Anton-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+
+  --color-primary: #1D4443;
+  --color-dark: #000000;
+  --color-light: #FFFFFF;
+
+  --color-hero-text: #42181F;
+  --color-hero-bg: #D5CFC1;
+
+  --color-menu-text: #9B2226;
+
+  --color-servicios-text: #1F2263;
+
+  --font-heading: 'Anton', sans-serif;
+  --font-body: 'JetBrains Mono', monospace;
+
+  --navbar-height: 80px;
+
+  --transition: 0.4s ease;
+  --radius: 20px;
+}
+
+/*RESET Y BASE*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.4;
+  font-size: 18px;
+  background-color: var(--color-light);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,h2,h3,h4,h5,h6,
+.brand-text {
+  font-family: var(--font-heading);
+}
+
+/*ACCESIBILIDAD*/
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/*UTILIDADES*/
+.text-justify-custom {
+  text-align: justify;
+}
+
+/*===========================HERO===========================*/
+.hero-section {
+  background-color: var(--color-hero-bg);
+  color: var(--color-hero-text);
+
+
+}
+
+.hero-video-wrapper,
+.hero-content-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+  height: calc(100vh - var(--navbar-height));
+
+}
+
+.hero-video-wrapper {
+  overflow: hidden;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content-wrapper {
+  padding: 3rem;
+}
+
+.hero-content {
+  max-width: 650px;
+  margin-inline: auto;
+}
+
+.btn-hero {
+  background-color: var(--color-hero-text);
+  color: var(--color-light) !important;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  padding: 15px 35px;
+  transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+  color: var(--color-hero-text) !important;
+  transform: scale(1.1);
+  filter: brightness(1.2);
+  box-shadow: 0 10px 20px var(--color-hero-text);
+}
+
+/*===========================MENÚ Y SLIDER===========================*/
+
+.autoShow {
+  animation: text-appear both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 100vh;
+}
+
+@keyframes text-appear {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.menu-intro {
+  background-color: var(--color-menu-text);
+  color: var(--color-light);
+}
+
+.btn-menu-accent {
+  background-color: var(--color-light);
+  color: var(--color-menu-text);
+  font-family: var(--font-heading);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.btn-menu-accent:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+}
+
+.slider {
+  width: 100%;
+  height: var(--height);
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 10% 90%,
+    transparent
+  );
+}
+
+.slider-list {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  will-change: transform;
+  animation: scrollSlider 15s linear infinite;
+}
+
+.slider-item {
+  flex: 0 0 var(--width);
+  height: var(--height);
+  display: flex;
+  align-items: center;
+  transition: filter 0.3s ease;
+}
+
+.slider-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes scrollSlider {
+  to {
+    transform: translateX(calc(-1 * var(--width) * var(--quantity)));
+  }
+}
+
+.slider:hover .slider-list {
+  animation-play-state: paused;
+}
+
+.slider:hover .slider-item {
+  filter: grayscale(1);
+}
+
+.slider-item:hover {
+  filter: grayscale(0) !important;
+}
+
+/*===========================SERVICIOS===========================*/
+
+
+.cta-servicios-section {
+  background-color: var(--color-hero-bg);
+  color: var(--color-servicios-text);
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.5s;
+  color: var(--color-servicios-text);
+  border-radius: 20px;
+  box-shadow:  0px 10px 20px var(--color-dark);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-servicios-text);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.card:hover {
+  color: var(--color-light);
+}
+
+.card:hover::before {
+  left: 0;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+}
+
+.btn-cta-servicios {
+  background-color: var(--color-servicios-text);
+  color: var(--color-hero-bg);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-cta-servicios:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+  box-shadow: 0 10px 20px var(--color-servicios-text);
+  color: var(--color-servicios-text);
+}
+
+/*===========================CONTACTO===========================*/
+
+.cta-contacto-section {
+  background-color: var(--color-light);
+  color: var(--color-primary);
+  border-radius: 25px;
+  border-bottom: 2px solid rgba(29, 68, 67, 0.1);
+}
+
+.btn-cta-contacto {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.btn-cta-contacto:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+  box-shadow: 0 10px 20px var(--color-primary);
+}
+
+.cta-contacto-img {
+  height: 200px;
+  object-fit: contain;
+
+  margin-inline: auto;
+}
+
+
+/*===========================RESPONSIVE, media queries===========================*/
+@media (max-width: 991.98px) {
+
+
+  .hero-video-wrapper {
+    height: 50vh;
+    min-height: 280px;
+  }
+
+  .hero-content-wrapper {
+    height: auto;
+    min-height: auto;
+
+  }
+
+  .hero-content-wrapper h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+
+}

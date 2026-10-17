@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago | Casa Libre</title>
+    <link rel="icon" href="assets/images/iconos/LogoCasaLibre.jpg" />
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/navbar.css"> 
+    <link rel="stylesheet" href="css/pago.css">
+</head>
+
+<body>
+
+    <!--**NAVBAR**-->
+    <header>
+        <div id="navbar-placeholder"></div>
+    </header>
+
+    <!--CONTENIDO PRINCIPAL-->
+    <main id="main-content">
+        
+        <section class="page-header py-5 text-center">
+            <div class="container py-3">
+                <h1 class="display-4 fw-bold mb-0">Finalizar Compra</h1>
+            </div>
+        </section>
+
+        <section class="checkout-section py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <!--Columna Principal - Formulario de Pago-->
+                    <div class="col-lg-7">
+                        <div class="card shadow-sm border-0 rounded-4">
+                            <div class="card-body p-4 p-md-5">
+                                <h3 class="h4 mb-4 text-uppercase">Datos del Cliente</h3>
+                                
+                                <form id="paymentForm" novalidate>
+                                    <div class="mb-3">
+                                        <label for="clientName" class="form-label">Nombre completo</label>
+                                        <input type="text" id="clientName" class="form-control" required pattern="[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]+" title="Solo letras y espacios">
+                                        <div class="invalid-feedback">Por favor ingresa un nombre válido sin números.</div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="clientPhone" class="form-label">Teléfono</label>
+                                        <input type="tel" id="clientPhone" class="form-control" required inputmode="numeric" pattern="\d+" title="Solo números">
+                                        <div class="invalid-feedback">Por favor ingresa un teléfono válido usando solo números.</div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="clientAddress" class="form-label">Dirección exacta</label>
+                                        <textarea id="clientAddress" class="form-control" rows="3" required></textarea>
+                                        <div class="invalid-feedback">Por favor ingresa una dirección válida.</div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="paymentMethod" class="form-label">Método de pago</label>
+                                        <select id="paymentMethod" class="form-select" required>
+                                            <option value="">Seleccione un método</option>
+                                            <option value="Tarjeta">Tarjeta de Crédito / Débito</option>
+                                            <option value="Transferencia">Transferencia Bancaria</option>
+                                            <option value="Efectivo">Efectivo</option>
+                                        </select>
+                                    </div>
+
+                                    <div id="cardFields" class="p-3 bg-light rounded-3 mb-4" style="display:none;">
+                                        <div class="mb-3">
+                                            <label for="cardNumber" class="form-label">Número de tarjeta</label>
+                                            <input type="text" id="cardNumber" class="form-control" placeholder="0000 0000 0000 0000" inputmode="numeric" pattern="\d{16}" title="16 dígitos">
+                                            <div class="invalid-feedback">Por favor ingresa un número de tarjeta válido de 16 dígitos.</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="cardExpiry" class="form-label">Fecha vencimiento</label>
+                                                <input type="text" id="cardExpiry" class="form-control" placeholder="MM/AA" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Formato MM/AA">
+                                                <div class="invalid-feedback">Por favor ingresa una fecha de vencimiento válida en formato MM/AA.</div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="cardCvv" class="form-label">CVV</label>
+                                                <input type="password" id="cardCvv" class="form-control" placeholder="123" maxlength="4" pattern="\d{3,4}" title="3 o 4 dígitos">
+                                                <div class="invalid-feedback">Por favor ingresa un CVV válido de 3 o 4 dígitos.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="transferFields" class="mb-4" style="display:none;">
+                                        <div class="alert alert-success border-0 shadow-sm">
+                                            <h5 class="alert-heading fw-bold">Banco Casa Libre</h5>
+                                            <p class="mb-1">Número de cuenta: <strong>123456789</strong></p>
+                                            <p class="mb-0">Titular: <strong>Casa Libre SV</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-payment w-100 py-3 mt-2">
+                                        Confirmar y Pagar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Segunda Columna - Resumen del Pedido-->
+                    <div class="col-lg-5">
+                        <div class="card shadow-sm border-0 rounded-4 position-sticky" style="top: calc(var(--navbar-height) + 20px);">
+                            <div class="card-body p-4">
+                                <h3 class="h4 mb-4 text-uppercase">Resumen del Pedido</h3>
+                                
+                                <div id="productsContainer" class="mb-3">
+                                    </div>
+                                
+                                <hr class="my-4 opacity-25">
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 mb-0 fw-bold">Total a pagar:</span>
+                                    <h4 class="h3 mb-0 total-amount">
+                                        $<span id="totalPay">0.00</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--Bootstrap-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!--Librería "jsPDF" de JavaScript que permite generar archivos PDF directamente en el navegador-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!--Archivo JavaScript con la lógica de pago-->
+    <script src="js/pago.js"></script>
+
+    <!--Carga de componentes-->
+    <script>
+        if(typeof loadHTML === "function") {
+            loadHTML("navbar-placeholder", "navbar.html");
+        }
+    </script>
+</body>
+</html>

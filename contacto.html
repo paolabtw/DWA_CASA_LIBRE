@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto | Casa Libre</title>
+    <link rel="icon" href="assets/images/LogoCasaLibre.jpg" />
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/contacto.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+
+  <body>
+    <!--**NAVBAR**-->
+    <header>
+      <div id="navbar-placeholder"></div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+      <!--PRIMER SECCIÓN-->
+      <section class="contacto-hero" aria-labelledby="hero-contacto-titulo">
+        <div class="container-fluid px-0">
+          <div class="hero-content">
+            <h1 id="hero-contacto-titulo">Conectemos</h1>
+
+            <p class="hero-sub">
+              Este espacio lo hacemos entre todos. Si tenés dudas, propuestas o
+              solo querés tomarte un buen café mientras platicamos, dejanos un
+              mensaje o visítanos en la casita.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section class="contacto-main" aria-labelledby="contacto-info-titulo">
+        <div class="container">
+          <div class="row g-4 align-items-stretch">
+            <!-- INFORMACIÓN -->
+            <div class="col-lg-5">
+              <article class="info-card h-100">
+                <h2 id="contacto-info-titulo">Información</h2>
+
+                <!-- Dirección -->
+                <div class="info-item">
+                  <div class="info-icon" aria-hidden="true">📍</div>
+                  <div class="info-item-text">
+                    <p>Dirección</p>
+                    <span>San Salvador, El Salvador</span>
+                  </div>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="info-item">
+                  <div class="info-icon" aria-hidden="true">📞</div>
+                  <div class="info-item-text">
+                    <p>Teléfono</p>
+                    <a href="tel:+50325246173"> (+503) 2524-6173 </a>
+                  </div>
+                </div>
+
+                <!-- Correo -->
+                <div class="info-item">
+                  <div class="info-icon" aria-hidden="true">✉️</div>
+                  <div class="info-item-text">
+                    <p>Correo electrónico</p>
+                    <a href="mailto:casalibresv@gmail.com">
+                      casalibresv@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <hr class="horarios-divider" />
+
+                <!-- Horarios -->
+                <div class="horarios">
+                  <p class="horarios-titulo">Horario de atención</p>
+
+                  <table class="horarios-tabla" aria-label="Horario de atención">
+                    <tbody>
+                      <tr>
+                        <td>Lunes</td>
+                        <td>10:00 a.m. – 6:00 p.m.</td>
+                      </tr>
+
+                      <tr>
+                        <td>Martes</td>
+                        <td>10:00 a.m. – 8:00 p.m.</td>
+                      </tr>
+
+                      <tr>
+                        <td>Miércoles</td>
+                        <td>10:00 a.m. – 8:00 p.m.</td>
+                      </tr>
+
+                      <tr>
+                        <td>Jueves</td>
+                        <td>10:00 a.m. – 8:00 p.m.</td>
+                      </tr>
+
+                      <tr>
+                        <td>Viernes</td>
+                        <td>10:00 a.m. – 8:00 p.m.</td>
+                      </tr>
+
+                      <tr>
+                        <td>Sábado</td>
+                        <td>10:00 a.m. – 8:00 p.m.</td>
+                      </tr>
+
+                      <tr>
+                        <td>Domingo</td>
+                        <td>10:00 a.m. – 6:00 p.m.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <hr class="horarios-divider" />
+                <!-- Redes Sociales-->
+                <div class="redes">
+                  <p class="redes-titulo">Síguenos</p>
+
+                  <div class="redes-lista">
+                    <a href="https://www.facebook.com/people/Casa-Xoxoctic/61553872127059/"
+                      class="red-btn"
+                      aria-label="Facebook de Casa Libre">
+                      <img src="assets/images/iconos/LogoFacebook.png"
+                        alt="Logo de Facebook"
+                        aria-hidden="true"/>
+                      <span>Facebook</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/casaxoxoctic/"
+                      class="red-btn"
+                      aria-label="Instagram de Casa Libre">
+                      <img src="assets/images/iconos/LogoInstagram.png"
+                        alt="Logo de Instagram"
+                        aria-hidden="true"/>
+                      <span>Instagram</span>
+                    </a>
+
+                    <a href="https://www.whatsapp.com/channel/0029VacqKMs30LKXZg9Q3v0i"
+                      class="red-btn"
+                      aria-label="WhatsApp de Casa Libre">
+                      <img src="assets/images/iconos/LogoWhataspp.png"
+                        alt="Logo de WhatsApp"
+                        aria-hidden="true"/>
+                      <span>WhatsApp</span>
+                    </a>
+
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!--FORMULARIO-->
+            <div class="col-lg-7">
+              <section class="form-card h-100">
+                <!--Toggle CSS-->
+                <input type="checkbox"
+                       id="form-enviado"
+                       class="form-enviado-toggle"
+                       aria-hidden="true"/>
+
+                <!--FORMULARIO-->
+                <div class="form-contenido">
+                  <h2>Envíanos un mensaje</h2>
+
+                  <form>
+                    <div class="row g-3">
+                      <!-- Nombre -->
+                      <div class="col-md-6">
+                        <label for="nombre" class="form-label"> Nombre </label>
+                        <input type="text"
+                          id="nombre"
+                          name="nombre"
+                          class="form-control"
+                          placeholder="Tu nombre completo"
+                          autocomplete="name"/>
+                      </div>
+
+                      <!-- Correo -->
+                      <div class="col-md-6">
+                        <label for="correo" class="form-label">
+                          Correo electrónico
+                        </label>
+
+                        <input type="email"
+                          id="correo"
+                          name="correo"
+                          class="form-control"
+                          placeholder="tucorreo@ejemplo.com"
+                          autocomplete="email"/>
+                      </div>
+
+                      <!-- Asunto -->
+                      <div class="col-12">
+                        <label for="asunto" class="form-label"> Asunto </label>
+
+                        <input type="text"
+                          id="asunto"
+                          name="asunto"
+                          class="form-control"
+                          placeholder="¿En qué podemos ayudarte?"/>
+                      </div>
+
+                      <!-- Mensaje -->
+                      <div class="col-12">
+                        <label for="mensaje" class="form-label">
+                          Mensaje
+                        </label>
+
+                        <textarea id="mensaje"
+                          name="mensaje"
+                          class="form-control"
+                          placeholder="Cuéntanos todo..."></textarea>
+                      </div>
+
+                      <!-- Botón -->
+                      <div class="col-12">
+                        <label
+                          for="form-enviado"
+                          class="btn-enviar"
+                          role="button"
+                          tabindex="0">Enviar mensaje
+                        </label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!--ENVIADO EXITOSAMENTE-->
+                <div class="form-exito" aria-live="polite">
+                  <div class="exito-icono">
+                    <span class="exito-check">✓</span>
+
+                    <div class="exito-anillo exito-anillo-1"></div>
+                    <div class="exito-anillo exito-anillo-2"></div>
+                    <div class="exito-anillo exito-anillo-3"></div>
+                  </div>
+
+                  <h3 class="exito-titulo">¡Mensaje recibido!</h3>
+
+                  <p class="exito-texto">
+                    Gracias por escribirnos.<br />
+                    Muy pronto alguien de la casita<br />
+                    se pondrá en contacto contigo.
+                  </p>
+
+                  <div class="exito-detalles">
+                    <span>📍 San Salvador</span>
+                    <span>📞 (+503) 2524-6173</span>
+                  </div>
+
+                  <label
+                    for="form-enviado"
+                    class="btn-volver"
+                    role="button"
+                    tabindex="0">
+                    ← Enviar otro mensaje
+                  </label>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAPA -->
+      <section class="mapa-seccion" aria-labelledby="mapa-titulo">
+        <div class="container text-center">
+          <h2 id="mapa-titulo">¿Cómo llegar?</h2>
+
+          <p class="mapa-sub">
+            Encuéntranos en San Salvador. Te esperamos con las puertas abiertas.
+          </p>
+
+          <div class="mapa-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.1!2d-89.232628!3d13.6865695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6331190d34838b%3A0xd7558e4ef5f40545!2sCasa%20Xoxoctic!5e0!3m2!1ses!2ssv!4v1"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              title="Ubicación de Casa Libre en Google Maps"
+            ></iframe>
+          </div>
+
+          <p class="mapa-sub mt-3">📍 Casa Libre · San Salvador, El Salvador</p>
+        </div>
+      </section>
+    </main>
+
+    <!--**FOOTER**-->
+    <footer>
+      <div id="footer-placeholder"></div>
+    </footer>
+
+    <!--Bootstrap-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!--Carga de componentes-->
+    <script>
+      async function loadHTML(id, url) {
+        try {
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error(`No se pudo cargar ${url}`);
+          }
+
+          const html = await response.text();
+
+          document.getElementById(id).innerHTML = html;
+
+          if (id === "navbar-placeholder") {
+            activateCurrentPage();
+          }
+        } catch (error) {
+          console.error(`Error cargando ${url}:`, error);
+        }
+      }
+
+      function activateCurrentPage() {
+        const currentPage =
+          window.location.pathname.split("/").pop() || "index.html";
+
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach((link) => {
+          const linkPage = link.getAttribute("href")?.trim();
+
+          if (linkPage === currentPage) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+          }
+        });
+      }
+
+      loadHTML("navbar-placeholder", "navbar.html");
+      loadHTML("footer-placeholder", "footer.html");
+    </script>
+    <script src="js/carrito.js"></script>
+  </body>
+</html>

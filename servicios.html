@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servicios | Casa Libre</title>
+    <link rel="icon" href="assets/images/LogoCasaLibre.jpg" />
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/servicios.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+
+  <body>
+    <!--**NAVBAR**-->
+    <header>
+      <div id="navbar-placeholder"></div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+      <section class="py-5 text-center servicios-intro">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="display-4 fw-bold mb-3">Mucho más que una cafetería</h1>
+        <p class="lead">
+          Acá rompemos las barreras de los espacios comunes. Armamos talleres para que puedas activar tu creatividad y grupos semanales para conectar, charlar o cantar sin pena ni pretensiones. ¡Apuntate al tuyo!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="py-5 servicios-section">
+        <div class="container">
+          <div class="row g-5">
+            <!-- TALLERES -->
+            <div class="col-lg-6">
+              <h2 class="display-5 fw-bold mb-4 text-center servicios-title">
+                Talleres
+              </h2>
+              <div
+                id="talleresCarousel"
+                class="carousel slide"
+                data-bs-ride="carousel"
+                aria-label="Carrusel de talleres"
+              >
+                <div class="carousel-inner text-center">
+                  <div class="carousel-item active">
+                    <h3 class="fw-bold">Taller de Postres</h3>
+                    <p class="lead">
+                      Disponible en: Febrero, Marzo, Agosto, Septiembre
+                    </p>
+                    <img
+                      src="assets/images/servicios/Reposteria.png"
+                      alt="Repostería"
+                      class="img-fluid service-img mb-3"
+                    />
+                    <p>
+                      En este taller aprenderás a hacer dulces fáciles y
+                      caseros.
+                    </p>
+                  </div>
+
+                  <div class="carousel-item">
+                    <h3 class="fw-bold">Taller de Mindfulness</h3>
+                    <p class="lead">
+                      Disponible en: Mayo, Junio, Noviembre, Diciembre
+                    </p>
+                    <img
+                      src="assets/images/servicios/Mindfulness.png"
+                      alt="Paz interior"
+                      class="img-fluid service-img mb-3"
+                    />
+                    <p>Técnicas para reducir estrés y mejorar bienestar.</p>
+                  </div>
+
+                  <div class="carousel-item">
+                    <h3 class="fw-bold">Taller de Dibujo</h3>
+                    <p class="lead">
+                      Disponible en: Enero, Abril, Julio, Octubre
+                    </p>
+                    <img
+                      src="assets/images/servicios/Dibujo.png"
+                      alt="Dibujo"
+                      class="img-fluid service-img mb-3"
+                    />
+                    <p>Aprende dibujo en un ambiente creativo.</p>
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#talleresCarousel"
+                  data-bs-slide="prev"
+                >
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#talleresCarousel"
+                  data-bs-slide="next"
+                >
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- GRUPOS -->
+            <div class="col-lg-6">
+              <h2 class="display-5 fw-bold mb-4 text-center servicios-title">
+                Grupos
+              </h2>
+
+              <div
+                id="gruposCarousel"
+                class="carousel slide"
+                data-bs-ride="carousel"
+                aria-label="Carrusel de grupos"
+              >
+                <div class="carousel-inner text-center">
+                  <div class="carousel-item active">
+                    <h3 class="fw-bold">Grupo de Lectura</h3>
+                    <p class="lead">Disponible: Jueves</p>
+                    <img
+                      src="assets/images/servicios/Libro.png"
+                      alt="Grupo de lectura"
+                      class="img-fluid service-img mb-3"
+                    />
+                    <p>Explora literatura y comparte ideas.</p>
+                  </div>
+
+                  <div class="carousel-item">
+                    <h3 class="fw-bold">Grupo de Charla cotidiana</h3>
+                    <p class="lead">Disponible: Martes</p>
+                    <img
+                      src="assets/images/servicios/Charla.png"
+                      alt="Charla cotidiana"
+                      class="img-fluid service-img mb-3"
+                    />
+                    <p>Espacio para compartir experiencias.</p>
+                  </div>
+
+                  <div class="carousel-item">
+                    <h3 class="fw-bold">Grupo de Karaoke</h3>
+                    <p class="lead">Disponible: Viernes</p>
+                    <img
+                      src="assets/images/servicios/Karaoke.png"
+                      alt="Karaoke"
+                      class="img-fluid service-img mb-3"
+                    />
+                    <p>Diviértete cantando con otros.</p>
+                  </div>
+                </div>
+
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#gruposCarousel"
+                  data-bs-slide="prev"
+                >
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#gruposCarousel"
+                  data-bs-slide="next"
+                >
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!--CALL TO ACTION HACIA PAGINA DE CONTACTO-->
+          <div class="row mt-5">
+            <div class="col-12 text-center">
+              <a href="contacto.html" class="btn btn-servicios px-4 py-3">
+                Más información sobre horarios, inscripciones y grupos
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--**FOOTER**-->
+    <footer>
+      <div id="footer-placeholder"></div>
+    </footer>
+
+    <!--Bootstrap-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!--Carga de componentes-->
+    <script>
+      async function loadHTML(id, url) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`No se pudo cargar ${url}`);
+          }
+          const html = await response.text();
+          document.getElementById(id).innerHTML = html;
+          /*ACTIVA EL LINK ACTUAL */
+          if (id === "navbar-placeholder") {
+            activateCurrentPage();
+          }
+        } catch (error) {
+          console.error(`Error cargando ${url}:`, error);
+        }
+      }
+
+      function activateCurrentPage() {
+        const currentPage =
+          window.location.pathname.split("/").pop() || "index.html";
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => {
+          const linkPage = link.getAttribute("href")?.trim();
+          if (linkPage === currentPage) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+          }
+        });
+      }
+
+      loadHTML("navbar-placeholder", "navbar.html");
+      loadHTML("footer-placeholder", "footer.html");
+    </script>
+    <script src="js/carrito.js"></script>
+  </body>
+</html>
