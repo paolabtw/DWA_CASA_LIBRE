@@ -1,310 +1,240 @@
-let productsArray = [];
+class Carrito {
+  constructor() {
+    this.items = [];
+    
+    this.badge = null;
+    this.cartItems = document.querySelector('#cartItems');
+    this.totalProducts = document.querySelector('#totalProducts');
+    this.totalPrice = document.querySelector('#totalPrice');
+    this.payBtn = document.querySelector('#payBtn');
 
-//Selectores (se asignan después del DOMContentLoaded) 
-let badge, cartItems, totalProducts, totalPrice, payBtn;
+    this.init();
+  }
 
-document.addEventListener('DOMContentLoaded', () => {
+  // Inicializa la carga local y asigna oyentes de eventos
+  init() {
+    this.cargarLocal();
+    this.asignarEventos();
 
-    badge         = document.querySelector('.badge');
-    cartItems     = document.querySelector('#cartItems');
-    totalProducts = document.querySelector('#totalProducts');
-    totalPrice    = document.querySelector('#totalPrice');
-    payBtn        = document.querySelector('#payBtn');
+    // Re-renderiza al cambiar el tamaño de pantalla para soporte responsive
+    window.addEventListener('resize', () => this.render());
+  }
 
-    loadLocal();
-    eventListeners();
-
-    //Re-renderiza si cambia el tamaño (ej: rotación móvil)
-    window.addEventListener('resize', () => renderCart());
-
-});
-
-//Event Listeners
-function eventListeners() {
-
-    // Delegar click en todo el main (las cards están dentro de main)
-    document.querySelector('main').addEventListener('click', getDataElements);
-
-    if (payBtn) {
-        payBtn.addEventListener('click', payProducts);
+  asignarEventos() {
+    // Captura de clics en las tarjetas del menú mediante delegación en el contenedor principal <main>
+    const mainContainer = document.querySelector('main');
+    if (mainContainer) {
+      mainContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-agregar')) {
+          const card = e.target.closest('.card');
+          this.obtenerDatosTarjeta(card, e.target);
+        }
+      });
     }
 
-}
-
-//Captura click en "Agregar al Carrito" 
-function getDataElements(e) {
-
-    if (e.target.classList.contains('btn-agregar')) {
-
-        //article.card es el ancestro directo de la card
-        const productCard = e.target.closest('.card');
-        selectData(productCard);
-
+    // Botón de pago
+    if (this.payBtn) {
+      this.payBtn.addEventListener('click', () => this.procesarPago());
     }
+  }
 
-}
+  // Extrae la información de la tarjeta e incluye la cantidad inicial del selector de la card
+  obtenerDatosTarjeta(card, btn) {
+    const id = btn.dataset.id;
+    const nombre = btn.dataset.nombre || card.querySelector('h3').childNodes[0].textContent.trim();
+    const foto = card.querySelector('img').src;
 
-//Extrae datos de la card y los agrega al carrito 
-function selectData(card) {
-
+    // Determinación del precio (Soporta selecciones dinámicas como las de las pizzas)
     let precio = 0;
-
-    //Pizzas tienen <select class="size-select">
     const select = card.querySelector('.size-select');
-
     if (select) {
-
-        precio = parseFloat(select.value);
-
+      precio = parseFloat(select.value);
+    } else if (btn.dataset.precio) {
+      precio = parseFloat(btn.dataset.precio);
     } else {
-
-        //Precio está en el <span> dentro del <h3>
-        precio = parseFloat(
-            card.querySelector('.menu-item h3 span').textContent.replace('$', '')
-        );
-
+      const spanPrecio = card.querySelector('.menu-item h3 span');
+      precio = spanPrecio ? parseFloat(spanPrecio.textContent.replace('$', '')) : 0;
     }
 
-    const btn = card.querySelector('.btn-agregar');
+    // Obtención de la cantidad elegida por el cliente antes de pulsar "Agregar"
+    const inputCantidadCard = document.getElementById(`cant-${id}`);
+    const cantidadSeleccionada = inputCantidadCard ? parseInt(inputCantidadCard.value) || 1 : 1;
 
-    const productObj = {
-        img:      card.querySelector('img').src,
-        title:    card.querySelector('h3').childNodes[0].textContent.trim(),
-        price:    precio,
-        id:       btn.dataset.id,
-        quantity: 1
-    };
+    this.agregar({
+      id: id,
+      title: nombre,
+      price: precio,
+      img: foto,
+      quantity: cantidadSeleccionada
+    });
+  }
 
-    //Evita duplicados (mismo id Y mismo precio — cubre pizzas con distinto tamaño)
-    const exists = productsArray.some(
-        p => p.id === productObj.id && p.price === productObj.price
+  // Agrega o actualiza la cantidad de un producto dentro del carrito
+  agregar(producto) {
+    // Identificador único (Combina ID y Precio para manejar diferentes tamaños de pizza como productos distintos)
+    const indexExistente = this.items.findIndex(
+      item => item.id === producto.id && item.price === producto.price
     );
 
-    if (exists) {
-        showAlert('Este producto ya fue agregado', 'error');
-        return;
+    if (indexExistente !== -1) {
+      // Si el producto ya existía en el carrito, se incrementa con la nueva cantidad agregada
+      this.items[indexExistente].quantity += producto.quantity;
+      this.mostrarAlerta(`Cantidad actualizada en el carrito (+${producto.quantity}) ✓`, 'success');
+    } else {
+      // Producto nuevo
+      this.items.push(producto);
+      this.mostrarAlerta('Producto agregado al carrito ✓', 'success');
     }
 
-    productsArray.push(productObj);
-    showAlert('Producto agregado al carrito ✓', 'success');
-    saveLocal();
-    renderCart();
+    this.guardarLocal();
+    this.render();
+  }
 
-}
+  // Modifica la cantidad desde la tabla o lista dentro del modal
+  modificarCantidad(index, nuevaCantidad) {
+    let cant = parseInt(nuevaCantidad);
+    if (isNaN(cant) || cant < 1) cant = 1;
 
-//Renderiza el carrito (tabla en desktop, tarjetas en móvil) 
-function renderCart() {
+    this.items[index].quantity = cant;
+    this.guardarLocal();
+    this.render();
+  }
 
-    if (!cartItems) return;
+  // Elimina un registro del carrito
+  eliminar(index) {
+    this.items.splice(index, 1);
+    this.mostrarAlerta('Producto eliminado', 'error');
+    this.guardarLocal();
+    this.render();
+  }
 
-    const isMobile = window.innerWidth < 768;
+  // Genera el HTML dentro del modal del carrito
+  render() {
+    if (!this.cartItems) return;
 
-    //En móvil se oculta el thead de la tabla
-    const thead = cartItems.closest('table')?.querySelector('thead');
-    if (thead) thead.style.display = isMobile ? 'none' : '';
+    const esMovil = window.innerWidth < 768;
 
-    cartItems.innerHTML = '';
+    // Ocultar/Mostrar encabezados de la tabla en versión móvil
+    const thead = this.cartItems.closest('table')?.querySelector('thead');
+    if (thead) thead.style.display = esMovil ? 'none' : '';
 
-    productsArray.forEach((prod, index) => {
+    this.cartItems.innerHTML = '';
 
-        const inputId   = `qty-input-${index}`;
-        const inputName = `qty-${index}`;
+    this.items.forEach((prod, index) => {
+      const inputId = `qty-input-${index}`;
 
-        if (isMobile) {
+      if (esMovil) {
+        // Renderizado tipo Tarjeta para Dispositivos Móviles
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 5;
+        td.style.padding = '8px 0';
 
-            //TARJETA MÓVIL
-            const tr  = document.createElement('tr');
-            const td  = document.createElement('td');
-            td.colSpan = 5;
-            td.style.padding = '8px 0';
+        td.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 12px; background: #f8f9fa; border-radius: 12px; padding: 10px;">
+            <img src="${prod.img}" alt="${prod.title}" style="width:65px; height:65px; object-fit:cover; border-radius:8px; flex-shrink:0;" />
+            <div style="flex:1; min-width:0;">
+              <p style="margin:0; font-weight:600; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${prod.title}</p>
+              <p style="margin:4px 0 0; color:#555; font-size:13px;">$${prod.price.toFixed(2)}</p>
+              <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+                <label for="${inputId}" style="font-size:12px; margin:0;">Cant.</label>
+                <input type="number" id="${inputId}" min="1" value="${prod.quantity}" style="width:60px;" class="form-control form-control-sm input-modal-cant" />
+              </div>
+            </div>
+            <button type="button" class="btn btn-danger btn-sm btn-eliminar" style="flex-shrink:0; padding:6px 10px;" aria-label="Eliminar ${prod.title}">🗑</button>
+          </div>
+        `;
 
-            td.innerHTML = `
-                <div style="
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 10px;
-                ">
-                    <img
-                        src="${prod.img}"
-                        alt="${prod.title}"
-                        style="width:65px;height:65px;object-fit:cover;border-radius:8px;flex-shrink:0;"
-                    />
-                    <div style="flex:1;min-width:0;">
-                        <p style="margin:0;font-weight:600;font-size:14px;
-                                  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                            ${prod.title}
-                        </p>
-                        <p style="margin:4px 0 0;color:#555;font-size:13px;">
-                            $${prod.price.toFixed(2)}
-                        </p>
-                        <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
-                            <label for="${inputId}" style="font-size:12px;margin:0;">Cant.</label>
-                            <input
-                                type="number"
-                                id="${inputId}"
-                                name="${inputName}"
-                                min="1"
-                                value="${prod.quantity}"
-                                autocomplete="off"
-                                style="width:60px;"
-                                class="form-control form-control-sm"
-                            />
-                        </div>
-                    </div>
-                    <button
-                        type="button"
-                        class="btn btn-danger btn-sm cart-delete"
-                        data-index="${index}"
-                        style="flex-shrink:0;padding:6px 10px;"
-                        aria-label="Eliminar ${prod.title}">
-                        🗑
-                    </button>
-                </div>
-            `;
+        // Eventos para móvil
+        td.querySelector('.input-modal-cant').addEventListener('change', (e) => this.modificarCantidad(index, e.target.value));
+        td.querySelector('.btn-eliminar').addEventListener('click', () => this.eliminar(index));
 
-            //Evento cantidad
-            td.querySelector(`#${inputId}`).addEventListener('change', (e) => {
-                let val = parseInt(e.target.value);
-                if (isNaN(val) || val < 1) val = 1;
-                productsArray[index].quantity = val;
-                renderCart();
-            });
+        tr.appendChild(td);
+        this.cartItems.appendChild(tr);
 
-            //Evento eliminar
-            td.querySelector('.cart-delete').addEventListener('click', () => {
-                productsArray.splice(index, 1);
-                showAlert('Producto eliminado', 'error');
-                renderCart();
-            });
+      } else {
+        // Renderizado tipo Fila de Tabla para Pantallas Grandes (Desktop)
+        const tr = document.createElement('tr');
 
-            tr.appendChild(td);
-            cartItems.appendChild(tr);
+        tr.innerHTML = `
+          <td><img src="${prod.img}" alt="${prod.title}" style="width:70px; height:70px; object-fit:cover; border-radius:10px;" /></td>
+          <td style="font-weight: 500;">${prod.title}</td>
+          <td>$${prod.price.toFixed(2)}</td>
+          <td>
+            <input type="number" id="${inputId}" min="1" value="${prod.quantity}" style="width:70px;" class="form-control form-control-sm input-modal-cant" />
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger btn-sm btn-eliminar" aria-label="Eliminar ${prod.title}">X</button>
+          </td>
+        `;
 
-        } else {
+        // Eventos para desktop
+        tr.querySelector('.input-modal-cant').addEventListener('change', (e) => this.modificarCantidad(index, e.target.value));
+        tr.querySelector('.btn-eliminar').addEventListener('click', () => this.eliminar(index));
 
-            //FILA DESKTOP 
-            const tr = document.createElement('tr');
-
-            //Imagen
-            const tdImg = document.createElement('td');
-            const img   = document.createElement('img');
-            img.src    = prod.img;
-            img.alt    = prod.title;
-            img.style.cssText = 'width:80px;height:80px;object-fit:cover;border-radius:10px;';
-            tdImg.appendChild(img);
-
-            //Título
-            const tdTitle = document.createElement('td');
-            tdTitle.textContent = prod.title;
-
-            //Precio
-            const tdPrice = document.createElement('td');
-            tdPrice.textContent = `$${prod.price.toFixed(2)}`;
-
-            //Cantidad
-            const tdQty = document.createElement('td');
-            const input = document.createElement('input');
-            input.type         = 'number';
-            input.id           = inputId;
-            input.name         = inputName;
-            input.min          = '1';
-            input.value        = prod.quantity;
-            input.autocomplete = 'off';
-            input.style.width  = '70px';
-            input.classList.add('form-control', 'form-control-sm');
-
-            input.addEventListener('change', (e) => {
-                let val = parseInt(e.target.value);
-                if (isNaN(val) || val < 1) val = 1;
-                productsArray[index].quantity = val;
-                renderCart();
-            });
-
-            tdQty.appendChild(input);
-
-            //Eliminar
-            const tdDel = document.createElement('td');
-            const btn   = document.createElement('button');
-            btn.type        = 'button';
-            btn.textContent = 'X';
-            btn.setAttribute('aria-label', `Eliminar ${prod.title}`);
-            btn.classList.add('btn', 'btn-danger', 'btn-sm');
-
-            btn.addEventListener('click', () => {
-                productsArray.splice(index, 1);
-                showAlert('Producto eliminado', 'error');
-                renderCart();
-            });
-
-            tdDel.appendChild(btn);
-            tr.append(tdImg, tdTitle, tdPrice, tdQty, tdDel);
-            cartItems.appendChild(tr);
-
-        }
-
+        this.cartItems.appendChild(tr);
+      }
     });
 
-    //Badge — se busca en cada render porque el navbar carga dinámicamente
-    const badgeLive = document.querySelector('.badge');
-    if (badgeLive) badgeLive.textContent = productsArray.length;
+    // Actualización de contadores y montos totales
+    this.actualizarTotales();
+  }
 
-    let totalCant  = 0;
-    let totalPagar = 0;
+  actualizarTotales() {
+    // Búsqueda dinámica del badge para asegurar su actualización aunque la barra de navegación se cargue de forma asíncrona
+    const badgeActual = document.querySelector('.badge');
+    if (badgeActual) badgeActual.textContent = this.items.length;
 
-    productsArray.forEach(p => {
-        totalCant  += p.quantity;
-        totalPagar += p.price * p.quantity;
+    let totalUnidades = 0;
+    let totalDinero = 0;
+
+    this.items.forEach(prod => {
+      totalUnidades += prod.quantity;
+      totalDinero += prod.price * prod.quantity;
     });
 
-    if (totalProducts) totalProducts.textContent = totalCant;
-    if (totalPrice)    totalPrice.textContent     = totalPagar.toFixed(2);
+    if (this.totalProducts) this.totalProducts.textContent = totalUnidades;
+    if (this.totalPrice) this.totalPrice.textContent = totalDinero.toFixed(2);
+  }
 
-    saveLocal();
-
-}
-
-//Ir a pago
-function payProducts() {
-
-    if (productsArray.length === 0) {
-        showAlert('El carrito está vacío', 'error');
-        return;
+  procesarPago() {
+    if (this.items.length === 0) {
+      this.mostrarAlerta('El carrito está vacío', 'error');
+      return;
     }
 
-    localStorage.setItem('checkoutProducts', JSON.stringify(productsArray));
+    localStorage.setItem('checkoutProducts', JSON.stringify(this.items));
     window.location.href = 'pago.html';
+  }
 
-}
-
-//Alerta flotante
-function showAlert(message, type) {
-
+  mostrarAlerta(mensaje, tipo) {
     const div = document.createElement('div');
-    div.classList.add('custom-alert', type);
-    div.textContent = message;
+    div.classList.add('custom-alert', tipo);
+    div.textContent = mensaje;
     document.body.appendChild(div);
 
     setTimeout(() => div.remove(), 2500);
+  }
 
-}
+  guardarLocal() {
+    localStorage.setItem('cartProducts', JSON.stringify(this.items));
+  }
 
-//LocalStorage 
-function saveLocal() {
-
-    localStorage.setItem('cartProducts', JSON.stringify(productsArray));
-
-}
-
-function loadLocal() {
-
-    const saved = localStorage.getItem('cartProducts');
-
-    if (saved) {
-        productsArray = JSON.parse(saved);
-        renderCart();
+  cargarLocal() {
+    const guardados = localStorage.getItem('cartProducts');
+    if (guardados) {
+      try {
+        this.items = JSON.parse(guardados);
+      } catch (error) {
+        console.error('Error al parsear el localStorage:', error);
+        this.items = [];
+      }
     }
-
+  }
 }
+
+// Instanciación global de la clase Carrito cuando el DOM esté listo
+let carritoApp;
+document.addEventListener('DOMContentLoaded', () => {
+  carritoApp = new Carrito();
+});

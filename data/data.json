@@ -1,0 +1,147 @@
+{
+  "desayunos": [
+    { "id": 1, "nombre": "Pancakes", "precio": 2.50, "foto": "assets/images/menu/Pancakes.webp", "descripcion": "Tres unidades acompañadas de miel de maple." },
+    { "id": 2, "nombre": "Tamales de Elote", "precio": 1.00, "foto": "assets/images/menu/Tamal.jpg", "descripcion": "Servidos con una porción de crema." },
+    { "id": 3, "nombre": "Huevos Rancheros", "precio": 2.50, "foto": "assets/images/menu/HuevosRancheros.jpg", "descripcion": "Huevos rancheros acompañados con salsa casera." },
+    { "id": 4, "nombre": "Omelette", "precio": 2.50, "foto": "assets/images/menu/Omelette.jpg", "descripcion": "Omelette acompañado de pan integral." },
+    { "id": 5, "nombre": "Burrito", "precio": 2.50, "foto": "assets/images/menu/Burrito.jpg", "descripcion": "Tortilla de harina grande rellena." },
+    { "id": 6, "nombre": "Avena", "precio": 1.50, "foto": "assets/images/menu/Avena.jpg", "descripcion": "Tazón de avena cocida con leche." },
+    { "id": 7, "nombre": "Plátano Frito", "precio": 1.10, "foto": "assets/images/menu/Platano.jpg", "descripcion": "Plátano frito acompañado de frijoles fritos." }
+  ],
+  "lunch": [
+    { "id": 8, "nombre": "Tostadas de Plátano", "precio": 1.00, "foto": "assets/images/menu/Tostadas.jpg", "descripcion": "Tres unidades acompañadas." },
+    { "id": 9, "nombre": "Tortas de Jamón", "precio": 3.00, "foto": "assets/images/menu/Tortas.jpg", "descripcion": "Torta de jamón acompañada con queso." },
+    { "id": 10, "nombre": "Rollitos de Pan", "precio": 2.00, "foto": "assets/images/menu/Rollitos.jpg", "descripcion": "Pan integral con queso crema y jamón." },
+    { "id": 11, "nombre": "Lomo Salteado", "precio": 5.00, "foto": "assets/images/menu/LomoSalteado.jpg", "descripcion": "Trozos de carne de res salteados." },
+    { "id": 12, "nombre": "Milanesa de Res", "precio": 4.00, "foto": "assets/images/menu/Milenesa.jpg", "descripcion": "Filete de res empanizado acompañado con ensalada." },
+    { "id": 13, "nombre": "Sopa de Tortilla", "precio": 3.00, "foto": "assets/images/menu/SopaDeTortilla.webp", "descripcion": "Sopa caliente con tortilla crujiente." },
+    { "id": 14, "nombre": "Enchiladas", "precio": 1.00, "foto": "assets/images/menu/Enchiladas.avif", "descripcion": "Servidas con lechuga, queso fresco, cebolla y aguacate." }
+  ],
+  "pizzas": [
+    { 
+      "id": 15, 
+      "nombre": "Pizza Pepperoni", 
+      "foto": "assets/images/menu/PizzaPeperoni.webp", 
+      "descripcion": "Queso mozzarella y pepperoni.", 
+      "opciones": [
+        { "texto": "Personal 4 porciones — $6.50", "precio": "6.50" }, 
+        { "texto": "Grande 8 porciones — $11.00", "precio": "11.00" }
+      ] 
+    },
+    { 
+      "id": 16, 
+      "nombre": "Pizza Jamón", 
+      "foto": "assets/images/menu/PizzaJamon.jpg", 
+      "descripcion": "Jamón y queso fundido.", 
+      "opciones": [
+        { "texto": "Personal 4 porciones — $6.50", "precio": "6.50" }, 
+        { "texto": "Grande 8 porciones — $11.00", "precio": "11.00" }
+      ] 
+    },
+    { 
+      "id": 17, 
+      "nombre": "Pizza Vegana", 
+      "foto": "assets/images/menu/PizzaVegana.jpg", 
+      "descripcion": "Vegetales frescos y salsa natural.", 
+      "opciones": [
+        { "texto": "Personal 4 porciones — $6.50", "precio": "6.50" }, 
+        { "texto": "Grande 8 porciones — $11.00", "precio": "11.00" }
+      ] 
+    },
+    { 
+      "id": 18, 
+      "nombre": "Pizza Vegetariana", 
+      "foto": "assets/images/menu/PizzaVegetariana.jpg", 
+      "descripcion": "Champiñones, chile y cebolla.", 
+      "opciones": [
+        { "texto": "Personal 4 porciones — $6.50", "precio": "6.50" }, 
+        { "texto": "Grande 8 porciones — $11.00", "precio": "11.00" }
+      ] 
+    },
+    { 
+      "id": 19, 
+      "nombre": "Pizza Hawaiana", 
+      "foto": "assets/images/menu/PizzaHawaiana.webp", 
+      "descripcion": "Jamón, queso mozzarella y piña dulce.", 
+      "opciones": [
+        { "texto": "Personal 4 porciones — $6.50", "precio": "6.50" }, 
+        { "texto": "Grande 8 porciones — $11.00", "precio": "11.00" }
+      ] 
+    }
+  ],
+  "bowls": [
+    { "id": 20, "nombre": "Bowl de Carne Asada", "precio": 5.00, "foto": "assets/images/menu/BowlCarne.png", "descripcion": "Cortes de res a la parrilla sobre frijoles negros y arroz." },
+    { "id": 21, "nombre": "Bowl Mediterráneo", "precio": 5.50, "foto": "assets/images/menu/BowlMediterraneo.jpeg", "descripcion": "Aceite de oliva, cereales integrales, frutos secos, frutas frescas, jamón, queso." },
+    { "id": 22, "nombre": "Bowl de Camarón", "precio": 10.00, "foto": "assets/images/menu/EnsaladaDeCamaron.jpeg", "descripcion": "Camarones sobre una base de arroz blanco y aguacate." },
+    { "id": 23, "nombre": "Bowl de Fajitas de Res", "precio": 5.50, "foto": "assets/images/menu/Fajitas.jpg", "descripcion": "Tiras de res salteadas con arroz y pimientos." },
+    { "id": 24, "nombre": "Bowl de Pollo", "precio": 5.50, "foto": "assets/images/menu/BowlDePollo.webp", "descripcion": "Pechuga de pollo servida sobre arroz con tomate, lechuga y aguacate." },
+    { "id": 25, "nombre": "Bowl Vegano de Lentejas", "precio": 6.25, "foto": "assets/images/menu/Lentejas.jpg", "descripcion": "Lentejas guisadas con vegetales sobre una base de arroz Jazmín." }
+  ],
+  "postres": [
+    { "id": 26, "nombre": "Galletas de la Casa", "precio": 1.00, "foto": "assets/images/menu/Cookies.jpg", "descripcion": "Dos galletas grandes con trozos de chocolate." },
+    { "id": 27, "nombre": "Brownie de Chocolate", "precio": 2.00, "foto": "assets/images/menu/Brownies.avif", "descripcion": "Cuadrado de chocolate húmedo y denso con nueces picadas." },
+    { "id": 28, "nombre": "Rol de Canela", "precio": 2.00, "foto": "assets/images/menu/RollosDeCanela.webp", "descripcion": "Pan suave con abundante canela y mantequilla." },
+    { "id": 29, "nombre": "Vegan Ice Cream", "precio": 3.50, "foto": "assets/images/menu/IceCream.jpg", "descripcion": "Copa de helado disponible en sabores de vainilla y chocolate." },
+    { "id": 30, "nombre": "Paleta de Yogurt", "precio": 1.00, "foto": "assets/images/menu/PaletasDeYogurt.jpg", "descripcion": "Paleta cremosa de yogurt mezclada con trozos de fruta." },
+    { "id": 31, "nombre": "Paleta de Leche", "precio": 1.50, "foto": "assets/images/menu/PaletasDeLeche.avif", "descripcion": "Paleta clásica elaborada con leche." },
+    { "id": 32, "nombre": "Donas", "precio": 1.50, "foto": "assets/images/menu/Donas.jpg", "descripcion": "Par de donas suaves a elegir entre chocolate o azúcar con canela." },
+    { "id": 33, "nombre": "Cheesecake de Fresa", "precio": 4.50, "foto": "assets/images/menu/Cheesecake.avif", "descripcion": "Base de galleta con crema suave de queso, coronado con fresas frescas." },
+    { "id": 34, "nombre": "Flan de Queso", "precio": 4.50, "foto": "assets/images/menu/Flan.webp", "descripcion": "Base de queso crema y leche condensada, bañado en caramelo." }
+  ],
+  "snacks": [
+    { "id": 35, "nombre": "Papas Rancheras", "precio": 2.00, "foto": "assets/images/menu/Papas.jpg", "descripcion": "Papas fritas con mayonesa y toque de sal." },
+    { "id": 36, "nombre": "Papas de Feria", "precio": 2.00, "foto": "assets/images/menu/PapasDeFeria.jpg", "descripcion": "Acompañadas de queso rallado, ketchup, mostaza y mayonesa." },
+    { "id": 37, "nombre": "Nachos Especiales", "precio": 2.00, "foto": "assets/images/menu/Nachos.jpg", "descripcion": "Tortillas de maíz servidas con queso, frijoles fritos y chimol fresco." },
+    { "id": 38, "nombre": "Dip y Chips", "precio": 2.25, "foto": "assets/images/menu/Chips.webp", "descripcion": "Crujientes tortillas fritas de maíz acompañadas con salsa." },
+    { "id": 39, "nombre": "Yuca Frita", "precio": 2.00, "foto": "assets/images/menu/Yuca.jpg", "descripcion": "Yuca frita acompañada de salsa, repollo y toque de sal." }
+  ],
+  "bebidas": [
+    { "id": 40, "nombre": "Limonada", "precio": 2.75, "foto": "assets/images/menu/Limonada.jpg" },
+    { "id": 41, "nombre": "Jugo de Naranja", "precio": 2.75, "foto": "assets/images/menu/JugoDeNaranja.jpg" },
+    { "id": 42, "nombre": "Cebada", "precio": 2.75, "foto": "assets/images/menu/Cebada.jpg" },
+    { "id": 43, "nombre": "Horchata", "precio": 2.75, "foto": "assets/images/menu/Horchata.jpg" },
+    { "id": 44, "nombre": "Té Helado", "precio": 2.75, "foto": "assets/images/menu/TeHelado.avif" },
+    { "id": 45, "nombre": "Matcha Vanilla", "precio": 3.00, "foto": "assets/images/menu/Matcha.webp" },
+    { "id": 46, "nombre": "Gaseosa", "precio": 2.75, "foto": "assets/images/menu/Soda.jpg" },
+    { "id": 47, "nombre": "Agua", "precio": 1.00, "foto": "assets/images/menu/Agua.jpg" },
+    { "id": 49, "nombre": "Atol Chuco", "precio": 2.75, "foto": "assets/images/menu/AtolChuco.jpg" }
+  ],
+  "cafe": [
+    { "id": 50, "nombre": "Café Americano", "precio": 2.00, "foto": "assets/images/menu/BlackCoffee.jpg", "descripcion": "Expreso doble diluido en agua caliente. Equilibrado, suave y aromático." },
+    { "id": 51, "nombre": "Café Espresso", "precio": 1.50, "foto": "assets/images/menu/Espresso.jpg", "descripcion": "Pídelo frío o caliente." },
+    { "id": 52, "nombre": "Capuchino", "precio": 3.00, "foto": "assets/images/menu/Capuchino.webp", "descripcion": "Shot doble de espresso con leche, pídelo caliente o frío." },
+    { "id": 53, "nombre": "Latte", "precio": 2.00, "foto": "assets/images/menu/Latte.webp", "descripcion": "Espresso con abundante leche cremosa." },
+    { "id": 54, "nombre": "Mocca", "precio": 2.00, "foto": "assets/images/menu/Mocca.jpg", "descripcion": "La combinación perfecta de espresso y chocolate oscuro." },
+    { "id": 55, "nombre": "Frappe Clásico", "precio": 2.00, "foto": "assets/images/menu/Frappe.jpg", "descripcion": "Café licuado con hielo y leche, con crema batida." },
+    { "id": 56, "nombre": "Chocolate Caliente", "precio": 2.00, "foto": "assets/images/menu/Chocolate.avif", "descripcion": "Elaborado con cacao puro y leche cremosa." }
+  ],
+  "burgers": [
+    { "id": 57, "nombre": "Classic Cheeseburger", "precio": 3.50, "foto": "assets/images/menu/HamburguesaClasica.jpg", "descripcion": "Medallón de res, queso cheddar, lechuga, tomate y salsa." },
+    { "id": 58, "nombre": "Bacon Burger", "precio": 4.00, "foto": "assets/images/menu/HamburguesaConTocino.png", "descripcion": "Doble lasca de tocino con aros de cebolla y queso." },
+    { "id": 59, "nombre": "Double Trouble", "precio": 5.00, "foto": "assets/images/menu/HamburguesaDoble.webp", "descripcion": "Doble medallón con doble queso cheddar, cebolla y pepinillo." },
+    { "id": 60, "nombre": "Sandwich Clásico", "precio": 3.50, "foto": "assets/images/menu/Sandwich.png", "descripcion": "Triple piso de pan con pollo desmechado, jamón, tocino, queso, lechuga y tomate." },
+    { "id": 61, "nombre": "Pulled Pork Sandwich", "precio": 4.00, "foto": "assets/images/menu/HamburguesaDeCerdo.jpg", "descripcion": "Cerdo cocinado a fuego lento con salsa, servido con encurtidos y cebolla frita." },
+    { "id": 62, "nombre": "Breakfast Sandwich", "precio": 3.50, "foto": "assets/images/menu/Breakfast.webp", "descripcion": "Huevo revuelto, tocino, queso y un toque de mayonesa en pan." },
+    { "id": 63, "nombre": "Chicken Salad Sandwich", "precio": 5.20, "foto": "assets/images/menu/ChickenSalad.webp", "descripcion": "Pollo clásico servido en un crujiente pan de mantequilla." }
+  ],
+  "tipica": [
+    { 
+      "id": 64, 
+      "nombre": "Pupusas Tradicionales", 
+      "foto": "assets/images/menu/Pupusas.jpg", 
+      "descripcion": "Acompañadas de curtido y salsa de tomate casera.", 
+      "opciones": [
+        { "texto": "Revueltas — $1.25", "precio": "0.75" }, 
+        { "texto": "Queso con Loroco — $1.25", "precio": "1.25" }, 
+        { "texto": "Frijol con Queso — $1.00", "precio": "0.50" }, 
+        { "texto": "Chicharrón con Queso — $1.25", "precio": "1.25" }
+      ] 
+    },
+    { "id": 65, "nombre": "Sopa de Gallina India", "precio": 5.00, "foto": "assets/images/menu/SopaGallina.jpg", "descripcion": "Servida con porción de gallina asada, arroz, cuajada y tortillas." },
+    { "id": 66, "nombre": "Pastelitos de Carne", "precio": 2.50, "foto": "assets/images/menu/Pastelitos.jpg", "descripcion": "Orden de 3 pastelitos de maíz rellenos de carne y verduras con curtido." },
+    { "id": 67, "nombre": "Nuégados de Yuca", "precio": 2.25, "foto": "assets/images/menu/Nuegados.jpg", "descripcion": "Bañados con dulce de atado y acompañados de atol chuco" },
+    { "id": 68, "nombre": "Empanadas de Plátano", "precio": 2.00, "foto": "assets/images/menu/Empanadas.jpg", "descripcion": "Orden de 2 empanadas de plátano maduro rellenas de leche o frijol." },
+    { "id": 69, "nombre": "Riguas con Queso", "precio": 2.50, "foto": "assets/images/menu/Riguas.jpg", "descripcion": "Tortas de elote tierno servidas sobre hoja de plátano con crema y queso fresco." },
+    { "id": 70, "nombre": "Bandeja de cuajadas", "precio": 1.00, "foto": "assets/images/menu/Cuajadas.jpg", "descripcion": "Bandeja de tres cuajadas de queso con tortillas frescas y salsa de tomate casera." }
+  ]
+}
