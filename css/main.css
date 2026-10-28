@@ -13,16 +13,18 @@
 
 :root {
 
-  --color-primary: #1D4443;
-  --color-dark: #000000;
-  --color-light: #FFFFFF;
+  --main-red-color: #7E0200;
+  --main-black-color: #000000;
+  --main-white-color: #FFFFFF;
+  --main-gray-color: #D9D9D9;
+  --main-green-color: #1D4443;
 
-  --color-hero-text: #42181F;
-  --color-hero-bg: #D5CFC1;
+  --main-brown-color: #42181F;
+  --main-beige-color: #D5CFC1;
 
-  --color-menu-text: #9B2226;
+  --main-brick-color: #9B2226;
 
-  --color-servicios-text: #1F2263;
+  --main-blue-color: #1F2263;
 
   --font-heading: 'Anton', sans-serif;
   --font-body: 'JetBrains Mono', monospace;
@@ -51,7 +53,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.4;
   font-size: 18px;
-  background-color: var(--color-light);
+  background-color: var(--main-white-color);
   overflow-x: hidden;
 }
 
@@ -67,7 +69,7 @@ h1,h2,h3,h4,h5,h6,
 
 /*ACCESIBILIDAD*/
 :focus-visible {
-  outline: 3px solid var(--color-primary);
+  outline: 3px solid var(--main-red-color);
   outline-offset: 3px;
 }
 
@@ -78,10 +80,8 @@ h1,h2,h3,h4,h5,h6,
 
 /*===========================HERO===========================*/
 .hero-section {
-  background-color: var(--color-hero-bg);
-  color: var(--color-hero-text);
-
-
+  background-color: var(--main-beige-color);
+  color: var(--main-brown-color);
 }
 
 .hero-video-wrapper,
@@ -117,8 +117,8 @@ h1,h2,h3,h4,h5,h6,
 }
 
 .btn-hero {
-  background-color: var(--color-hero-text);
-  color: var(--color-light) !important;
+  background-color: var(--main-brown-color);
+  color: var(--main-white-color) !important;
   font-family: var(--font-heading);
   text-transform: uppercase;
   border-radius: var(--radius);
@@ -127,10 +127,10 @@ h1,h2,h3,h4,h5,h6,
 }
 
 .btn-hero:hover {
-  color: var(--color-hero-text) !important;
+  color: var(--main-brown-color) !important;
   transform: scale(1.1);
   filter: brightness(1.2);
-  box-shadow: 0 10px 20px var(--color-hero-text);
+  box-shadow: 0 10px 20px var(--main-brown-color);
 }
 
 /*===========================MENÚ Y SLIDER===========================*/
@@ -155,13 +155,13 @@ h1,h2,h3,h4,h5,h6,
 }
 
 .menu-intro {
-  background-color: var(--color-menu-text);
-  color: var(--color-light);
+  background-color: var(--main-brick-color);
+  color: var(--main-white-color);
 }
 
 .btn-menu-accent {
-  background-color: var(--color-light);
-  color: var(--color-menu-text);
+  background-color: var(--main-white-color);
+  color: var(--main-brick-color);
   font-family: var(--font-heading);
   border-radius: var(--radius);
   transition: all 0.3s ease;
@@ -170,7 +170,7 @@ h1,h2,h3,h4,h5,h6,
 .btn-menu-accent:hover {
   transform: scale(1.1);
   filter: brightness(1.1);
-  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 20px var(--main-gray-color);
 }
 
 .slider {
@@ -230,8 +230,8 @@ h1,h2,h3,h4,h5,h6,
 
 
 .cta-servicios-section {
-  background-color: var(--color-hero-bg);
-  color: var(--color-servicios-text);
+  background-color: var(--main-beige-color);
+  color: var(--main-green-color);
 }
 
 .card {
@@ -239,9 +239,9 @@ h1,h2,h3,h4,h5,h6,
   z-index: 1;
   overflow: hidden;
   transition: 0.5s;
-  color: var(--color-servicios-text);
+  color: var(--main-green-color);
   border-radius: 20px;
-  box-shadow:  0px 10px 20px var(--color-dark);
+  box-shadow:  0px 10px 20px var(--main-black-color);
 }
 
 .card::before {
@@ -251,13 +251,13 @@ h1,h2,h3,h4,h5,h6,
   top: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-servicios-text);
+  background: var(--main-green-color);
   transition: 0.5s;
   z-index: -1;
 }
 
 .card:hover {
-  color: var(--color-light);
+  color: var(--main-white-color);
 }
 
 .card:hover::before {
@@ -270,8 +270,8 @@ h1,h2,h3,h4,h5,h6,
 }
 
 .btn-cta-servicios {
-  background-color: var(--color-servicios-text);
-  color: var(--color-hero-bg);
+  background-color: var(--main-green-color);
+  color: var(--main-beige-color);
   font-family: var(--font-heading);
   text-transform: uppercase;
   border-radius: var(--radius);
@@ -282,22 +282,22 @@ h1,h2,h3,h4,h5,h6,
 .btn-cta-servicios:hover {
   transform: scale(1.1);
   filter: brightness(1.2);
-  box-shadow: 0 10px 20px var(--color-servicios-text);
-  color: var(--color-servicios-text);
+  box-shadow: 0 10px 20px var(--main-green-color);
+  color: var(--main-green-color);
 }
 
 /*===========================CONTACTO===========================*/
 
 .cta-contacto-section {
-  background-color: var(--color-light);
-  color: var(--color-primary);
+  background-color: var(--main-white-color);
+  color: var(--main-red-color);
   border-radius: 25px;
   border-bottom: 2px solid rgba(29, 68, 67, 0.1);
 }
 
 .btn-cta-contacto {
-  background-color: var(--color-primary);
-  color: var(--color-light);
+  background-color: var(--main-red-color);
+  color: var(--main-white-color);
   font-family: var(--font-heading);
   text-transform: uppercase;
   border-radius: var(--radius);
@@ -307,7 +307,7 @@ h1,h2,h3,h4,h5,h6,
 .btn-cta-contacto:hover {
   transform: scale(1.1);
   filter: brightness(1.2);
-  box-shadow: 0 10px 20px var(--color-primary);
+  box-shadow: 0 10px 20px var(--main-red-color);
 }
 
 .cta-contacto-img {

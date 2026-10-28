@@ -10,12 +10,12 @@ class Comida {
   }
 
   renderHTML() {
-    let opcionesHTML = '';
+    let opcionesHTML = "";
 
     if (this.opciones && this.opciones.length > 0) {
       const selectOptions = this.opciones
-        .map(opt => `<option value="${opt.precio}">${opt.texto}</option>`)
-        .join('');
+        .map((opt) => `<option value="${opt.precio}">${opt.texto}</option>`)
+        .join("");
 
       opcionesHTML = `
         <select class="form-select size-select mb-2" style="margin-bottom: 12px;">
@@ -24,12 +24,18 @@ class Comida {
       `;
     }
 
-    const precioHeader = (this.opciones && this.opciones.length > 0)
-      ? `<h3>${this.nombre}</h3>`
-      : `<h3>${this.nombre} <span>$${this.precio.toFixed(2)}</span></h3>`;
+    const precioHeader =
+      this.opciones && this.opciones.length > 0
+        ? `<h3>${this.nombre}</h3>`
+        : `<h3>${this.nombre} <span>$${this.precio.toFixed(2)}</span></h3>`;
 
-    const descripcionHTML = this.descripcion ? `<p style="margin-bottom: 12px;">${this.descripcion}</p>` : '';
-    const dataPrecioAttr = (this.opciones && this.opciones.length > 0) ? '' : `data-precio="${this.precio.toFixed(2)}"`;
+    const descripcionHTML = this.descripcion
+      ? `<p style="margin-bottom: 12px;">${this.descripcion}</p>`
+      : "";
+    const dataPrecioAttr =
+      this.opciones && this.opciones.length > 0
+        ? ""
+        : `data-precio="${this.precio.toFixed(2)}"`;
 
     //Convertimos el arreglo de temperaturas en texto
     const dataTemp = this.temperatura.join(' ');
@@ -94,25 +100,27 @@ function cambiarCantidad(id, cambio) {
 // Función asíncrona para cargar y renderizar el menú desde el archivo JSON externo
 async function cargarMenu() {
   try {
-    const respuesta = await fetch('data/data.json');
+    const respuesta = await fetch("data/data.json");
     if (!respuesta.ok) {
-      throw new Error('No se pudo cargar el archivo datos.json');
+      throw new Error("No se pudo cargar el archivo datos.json");
     }
-    
+
     const menuData = await respuesta.json();
 
     // Recorre cada categoría del JSON y pinta los elementos usando la clase Comida
     for (const [sectionId, items] of Object.entries(menuData)) {
       const container = document.getElementById(`container-${sectionId}`);
       if (container) {
-        container.innerHTML = items.map(itemData => {
-          const comidaObj = new Comida(itemData);
-          return comidaObj.renderHTML();
-        }).join('');
+        container.innerHTML = items
+          .map((itemData) => {
+            const comidaObj = new Comida(itemData);
+            return comidaObj.renderHTML();
+          })
+          .join("");
       }
     }
   } catch (error) {
-    console.error('Error al obtener los datos del menú:', error);
+    console.error("Error al obtener los datos del menú:", error);
   }
 }
-document.addEventListener('DOMContentLoaded', cargarMenu);
+document.addEventListener("DOMContentLoaded", cargarMenu);
