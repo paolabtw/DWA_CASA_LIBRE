@@ -1,15 +1,13 @@
 $(document).ready(function() {
     
-    // 1. Buscador de texto (Platillos y Categorías)
+    // 1. Búsqueda por texto directo
     $('#inputBuscador').on('keyup', function() {
         let textoBusqueda = $(this).val().toLowerCase();
         
         $('.card').each(function() {
             let contenidoPlatillo = $(this).text().toLowerCase();
-            // Busca la etiqueta <section> padre y extrae el texto de su <h2>
             let categoriaPlatillo = $(this).closest('section').find('h2').text().toLowerCase();
             
-            // Evalúa si el texto buscado coincide con el platillo o con el título de la categoría
             if (contenidoPlatillo.includes(textoBusqueda) || categoriaPlatillo.includes(textoBusqueda)) {
                 $(this).show(); 
             } else {
@@ -18,25 +16,37 @@ $(document).ready(function() {
         });
     });
 
-    // 2. Botones de filtro por categoría
-    $('.btn-filtro').on('click', function() {
-        
-        // Cambia el estilo del botón activo
-        $('.btn-filtro').removeClass('btn-dark active').addClass('btn-outline-dark');
-        $(this).removeClass('btn-outline-dark').addClass('btn-dark active');
-
-        let filtro = $(this).data('filtro');
-
-        if (filtro === 'todos') {
-            $('section.mb-5').fadeIn(400);
-        } else {
-            $('section.mb-5').hide();
-            // Muestra únicamente la sección que contiene el contenedor con el ID correspondiente
-            $(`section:has(#container-${filtro})`).fadeIn(400);
-        }
-        
-        // Limpia el buscador de texto al usar los botones
-        $('#inputBuscador').val('');
-        $('.card').show();
+    // 2. Comportamiento visual de los botones del modal (Toggle activo/inactivo)
+    $('.btn-pill-filtro').on('click', function() {
+        // Al hacer clic, alternamos la clase 'active'
+        $(this).toggleClass('active');
     });
+
+    // 3. Botón "Restablecer"
+    $('#btnRestablecer').on('click', function() {
+        $('.btn-pill-filtro').removeClass('active');
+        $('section.mb-5').show(); // Mostramos todas las secciones
+        $('.card').show(); // Mostramos todos los platillos
+    });
+
+    // 4. Botón "Aplicar"
+    $('#btnAplicarFiltros').on('click', function() {
+        // Obtenemos las categorías seleccionadas
+        let categoriasSeleccionadas = [];
+        $('.btn-pill-filtro.active[data-filtro]').each(function() {
+            categoriasSeleccionadas.push($(this).data('filtro'));
+        });
+
+        // Si no hay categorías seleccionadas, mostramos todo
+        if (categoriasSeleccionadas.length === 0) {
+            $('section.mb-5').fadeIn(300);
+        } else {
+            // Ocultamos todo y solo mostramos las secciones seleccionadas
+            $('section.mb-5').hide();
+            categoriasSeleccionadas.forEach(function(categoria) {
+                $(`section:has(#container-${categoria})`).fadeIn(300);
+            });
+        }
+    });
+
 });
