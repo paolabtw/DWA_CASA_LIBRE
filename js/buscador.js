@@ -1,9 +1,12 @@
 $(document).ready(function() {
     
-    // 1. Búsqueda por texto directo
+    // ==========================================
+    // 1. LÓGICA DEL BUSCADOR DE TEXTO
+    // ==========================================
     $('#inputBuscador').on('keyup', function() {
         let textoBusqueda = $(this).val().toLowerCase();
         
+        // PASO A: Ocultar/Mostrar los platillos individuales
         $('.card').each(function() {
             let contenidoPlatillo = $(this).text().toLowerCase();
             let categoriaPlatillo = $(this).closest('section').find('h2').text().toLowerCase();
@@ -14,34 +17,46 @@ $(document).ready(function() {
                 $(this).hide();
             }
         });
+
+        // PASO B: Ocultar/Mostrar las categorías completas (Títulos)
+        $('section.mb-5').each(function() {
+            // Contamos cuántas tarjetas quedaron visibles dentro de esta categoría específica
+            let tarjetasVisibles = $(this).find('.card:visible').length;
+            
+            if (tarjetasVisibles === 0) {
+                // Si no hay platillos visibles, ocultamos toda la sección (título incluido)
+                $(this).hide();
+            } else {
+                // Si hay al menos un platillo, mostramos la sección
+                $(this).show();
+            }
+        });
     });
 
-    // 2. Comportamiento visual de los botones del modal (Toggle activo/inactivo)
+    // ==========================================
+    // 2. LÓGICA DE LOS BOTONES DEL MODAL (Filtros)
+    // ==========================================
     $('.btn-pill-filtro').on('click', function() {
-        // Al hacer clic, alternamos la clase 'active'
         $(this).toggleClass('active');
     });
 
-    // 3. Botón "Restablecer"
+    // Botón "Restablecer"
     $('#btnRestablecer').on('click', function() {
         $('.btn-pill-filtro').removeClass('active');
-        $('section.mb-5').show(); // Mostramos todas las secciones
+        $('section.mb-5').show(); // Mostramos todas las categorías
         $('.card').show(); // Mostramos todos los platillos
     });
 
-    // 4. Botón "Aplicar"
+    // Botón "Aplicar"
     $('#btnAplicarFiltros').on('click', function() {
-        // Obtenemos las categorías seleccionadas
         let categoriasSeleccionadas = [];
         $('.btn-pill-filtro.active[data-filtro]').each(function() {
             categoriasSeleccionadas.push($(this).data('filtro'));
         });
 
-        // Si no hay categorías seleccionadas, mostramos todo
         if (categoriasSeleccionadas.length === 0) {
             $('section.mb-5').fadeIn(300);
         } else {
-            // Ocultamos todo y solo mostramos las secciones seleccionadas
             $('section.mb-5').hide();
             categoriasSeleccionadas.forEach(function(categoria) {
                 $(`section:has(#container-${categoria})`).fadeIn(300);
