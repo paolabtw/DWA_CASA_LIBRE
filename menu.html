@@ -65,26 +65,30 @@
         </div>
       </section>
 
-      <!-- BUSCADOR Y BOTÓN DE FILTROS -->
+            <!-- BUSCADOR Y BOTÓN DE FILTROS RESPONSIVE -->
       <div class="container my-4">
-          <!-- Barra de búsqueda -->
-          <div class="d-flex align-items-center bg-light rounded-pill p-1 shadow-sm mb-3" style="border: 1px solid #e0e0e0; max-width: 600px;">
-              <input type="text" id="inputBuscador" class="form-control border-0 bg-transparent shadow-none ms-2" placeholder="Buscar...">
+          <!-- Contenedor Flexbox-->
+          <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
               
-              <!-- Botón con tu imagen de búsqueda -->
-              <button class="btn rounded-circle d-flex justify-content-center align-items-center p-0" style="background-color: #e50050; width: 40px; height: 40px; min-width: 40px;">
-                  <img src="assets/images/busqueda/busqueda.png" alt="Buscar" width="20" height="20">
-              </button>
-          </div>
+              <!-- Barra de búsqueda -->
+              <div class="d-flex align-items-center bg-light rounded-pill p-1 shadow-sm w-100" style="border: 1px solid #e0e0e0; max-width: 600px;">
+                  <input type="text" id="inputBuscador" class="form-control border-0 bg-transparent shadow-none ms-2" placeholder="Buscar platillo o categoría...">
+                  
+                  <button class="btn d-flex justify-content-center align-items-center p-0 border-0 bg-transparent" style="width: 40px; height: 40px; min-width: 40px;">
+                      <img src="assets/images/busqueda/busqueda.png" alt="Buscar" width="28" height="28">
+                  </button>
+              </div>
 
-          <!-- Botón que abre el Modal de Filtros con tu imagen -->
-          <button class="btn bg-light rounded-pill fw-bold d-inline-flex align-items-center gap-2 px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalFiltros" style="border: 1px solid #0d6efd; color: #000;">
-              Filtros
-              <img src="assets/images/busqueda/filtro.png" alt="Icono Filtro" width="18" height="18">
-          </button>
+              <!-- Botón Filtros -->
+              <button class="btn bg-light rounded-pill fw-bold d-inline-flex align-items-center justify-content-center gap-2 px-4 py-2 shadow-sm flex-shrink-0" data-bs-toggle="modal" data-bs-target="#modalFiltros" style="border: 1px solid #0d6efd; color: #000; min-width: 120px;">
+                  Filtros
+                  <img src="assets/images/busqueda/filtro.png" alt="Icono Filtro" width="18" height="18">
+              </button>
+
+          </div>
       </div>
 
-                  <!-- MODAL DE FILTROS -->
+                        <!-- MODAL DE FILTROS -->
       <div class="modal fade" id="modalFiltros" tabindex="-1" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content" style="border-radius: 16px; border: 2px solid #0d6efd;">
@@ -108,12 +112,15 @@
                           <button class="btn btn-pill-filtro" data-filtro="postres">Postres</button>
                       </div>
 
-                      <h5 class="fw-bold mb-3">Temperatura</h5>
-                      <div class="d-flex flex-wrap gap-2 mb-2">
-                          <button class="btn btn-pill-filtro" data-tag="caliente">Caliente</button>
-                          <button class="btn btn-pill-filtro" data-tag="frio">Frío</button>
+                      <!-- INNOVACIÓN: Sección oculta que solo aparece al seleccionar Bebidas -->
+                      <div id="seccion-temperatura" style="display: none;">
+                          <hr>
+                          <h5 class="fw-bold mb-3 mt-2">Temperatura</h5>
+                          <div class="d-flex flex-wrap gap-2 mb-2">
+                              <button class="btn btn-pill-filtro" data-tag="caliente">Caliente</button>
+                              <button class="btn btn-pill-filtro" data-tag="frio">Frío</button>
+                          </div>
                       </div>
-
                   </div>
                   
                   <!-- Botón Aplicar -->

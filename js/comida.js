@@ -1,11 +1,12 @@
 class Comida {
-  constructor({ id, nombre, precio, foto, descripcion, opciones = null }) {
+  constructor({ id, nombre, precio, foto, descripcion, opciones = null, temperatura = [] }) {
     this.id = id;
     this.nombre = nombre;
     this.precio = precio;
     this.foto = foto;
     this.descripcion = descripcion;
-    this.opciones = opciones; 
+    this.opciones = opciones;
+    this.temperatura = temperatura; 
   }
 
   renderHTML() {
@@ -30,8 +31,11 @@ class Comida {
     const descripcionHTML = this.descripcion ? `<p style="margin-bottom: 12px;">${this.descripcion}</p>` : '';
     const dataPrecioAttr = (this.opciones && this.opciones.length > 0) ? '' : `data-precio="${this.precio.toFixed(2)}"`;
 
+    //Convertimos el arreglo de temperaturas en texto
+    const dataTemp = this.temperatura.join(' ');
+
     return `
-      <article class="card">
+      <article class="card" data-temperatura="${dataTemp}">
         <img src="${this.foto}" alt="${this.nombre}" />
         <div class="menu-item">
           ${precioHeader}
