@@ -65,9 +65,19 @@
         </div>
       </section>
 
-      <!-- BUSCADOR -->
-      <div class="container my-4">
-        <input type="text" id="inputBuscador" class="form-control form-control-lg shadow-sm" placeholder="Buscar platillo o categoría...">
+      <!-- BUSCADOR Y FILTROS POR CATEGORÍA -->
+      <div class="container my-4 text-center">
+        <!-- Buscador de texto -->
+        <input type="text" id="inputBuscador" class="form-control form-control-lg shadow-sm mb-4" placeholder="Buscar platillo o categoría (ej. Desayunos, Pizza)...">
+        
+        <!-- Botones de Filtro -->
+        <div class="d-flex justify-content-center flex-wrap gap-2" id="filtros-categorias">
+          <button class="btn btn-dark btn-filtro active" data-filtro="todos">Todos</button>
+          <button class="btn btn-outline-dark btn-filtro" data-filtro="desayunos">Desayunos</button>
+          <button class="btn btn-outline-dark btn-filtro" data-filtro="lunch">Lunch</button>
+          <button class="btn btn-outline-dark btn-filtro" data-filtro="pizzas">Pizzas</button>
+          <button class="btn btn-outline-dark btn-filtro" data-filtro="bebidas">Bebidas</button>
+        </div>
       </div>
 
       <!-- MENU -->
