@@ -96,24 +96,24 @@
     { "id": 39, "nombre": "Yuca Frita", "precio": 2.00, "foto": "assets/images/menu/Yuca.jpg", "descripcion": "Yuca frita acompañada de salsa, repollo y toque de sal." }
   ],
   "bebidas": [
-    { "id": 40, "nombre": "Limonada", "precio": 2.75, "foto": "assets/images/menu/Limonada.jpg" },
-    { "id": 41, "nombre": "Jugo de Naranja", "precio": 2.75, "foto": "assets/images/menu/JugoDeNaranja.jpg" },
-    { "id": 42, "nombre": "Cebada", "precio": 2.75, "foto": "assets/images/menu/Cebada.jpg" },
-    { "id": 43, "nombre": "Horchata", "precio": 2.75, "foto": "assets/images/menu/Horchata.jpg" },
-    { "id": 44, "nombre": "Té Helado", "precio": 2.75, "foto": "assets/images/menu/TeHelado.avif" },
-    { "id": 45, "nombre": "Matcha Vanilla", "precio": 3.00, "foto": "assets/images/menu/Matcha.webp" },
-    { "id": 46, "nombre": "Gaseosa", "precio": 2.75, "foto": "assets/images/menu/Soda.jpg" },
-    { "id": 47, "nombre": "Agua", "precio": 1.00, "foto": "assets/images/menu/Agua.jpg" },
-    { "id": 49, "nombre": "Atol Chuco", "precio": 2.75, "foto": "assets/images/menu/AtolChuco.jpg" }
+    { "id": 40, "nombre": "Limonada", "precio": 2.75, "foto": "assets/images/menu/Limonada.jpg", "temperatura": ["frio"] },
+    { "id": 41, "nombre": "Jugo de Naranja", "precio": 2.75, "foto": "assets/images/menu/JugoDeNaranja.jpg", "temperatura": ["frio"] },
+    { "id": 42, "nombre": "Cebada", "precio": 2.75, "foto": "assets/images/menu/Cebada.jpg", "temperatura": ["frio"] },
+    { "id": 43, "nombre": "Horchata", "precio": 2.75, "foto": "assets/images/menu/Horchata.jpg", "temperatura": ["frio"] },
+    { "id": 44, "nombre": "Té Helado", "precio": 2.75, "foto": "assets/images/menu/TeHelado.avif", "temperatura": ["frio"] },
+    { "id": 45, "nombre": "Matcha Vanilla", "precio": 3.00, "foto": "assets/images/menu/Matcha.webp", "temperatura": ["frio"] },
+    { "id": 46, "nombre": "Gaseosa", "precio": 2.75, "foto": "assets/images/menu/Soda.jpg", "temperatura": ["frio"] },
+    { "id": 47, "nombre": "Agua", "precio": 1.00, "foto": "assets/images/menu/Agua.jpg", "temperatura": ["frio"] },
+    { "id": 49, "nombre": "Atol Chuco", "precio": 2.75, "foto": "assets/images/menu/AtolChuco.jpg", "temperatura": ["caliente"] }
   ],
   "cafe": [
-    { "id": 50, "nombre": "Café Americano", "precio": 2.00, "foto": "assets/images/menu/BlackCoffee.jpg", "descripcion": "Expreso doble diluido en agua caliente. Equilibrado, suave y aromático." },
-    { "id": 51, "nombre": "Café Espresso", "precio": 1.50, "foto": "assets/images/menu/Espresso.jpg", "descripcion": "Pídelo frío o caliente." },
-    { "id": 52, "nombre": "Capuchino", "precio": 3.00, "foto": "assets/images/menu/Capuchino.webp", "descripcion": "Shot doble de espresso con leche, pídelo caliente o frío." },
-    { "id": 53, "nombre": "Latte", "precio": 2.00, "foto": "assets/images/menu/Latte.webp", "descripcion": "Espresso con abundante leche cremosa." },
-    { "id": 54, "nombre": "Mocca", "precio": 2.00, "foto": "assets/images/menu/Mocca.jpg", "descripcion": "La combinación perfecta de espresso y chocolate oscuro." },
-    { "id": 55, "nombre": "Frappe Clásico", "precio": 2.00, "foto": "assets/images/menu/Frappe.jpg", "descripcion": "Café licuado con hielo y leche, con crema batida." },
-    { "id": 56, "nombre": "Chocolate Caliente", "precio": 2.00, "foto": "assets/images/menu/Chocolate.avif", "descripcion": "Elaborado con cacao puro y leche cremosa." }
+    { "id": 50, "nombre": "Café Americano", "precio": 2.00, "foto": "assets/images/menu/BlackCoffee.jpg", "descripcion": "Expreso doble diluido en agua caliente. Equilibrado, suave y aromático.", "temperatura": ["caliente"] },
+    { "id": 51, "nombre": "Café Espresso", "precio": 1.50, "foto": "assets/images/menu/Espresso.jpg", "descripcion": "Pídelo frío o caliente.", "temperatura": ["frio", "caliente"] },
+    { "id": 52, "nombre": "Capuchino", "precio": 3.00, "foto": "assets/images/menu/Capuchino.webp", "descripcion": "Shot doble de espresso con leche, pídelo caliente o frío.", "temperatura": ["frio", "caliente"] },
+    { "id": 53, "nombre": "Latte", "precio": 2.00, "foto": "assets/images/menu/Latte.webp", "descripcion": "Espresso con abundante leche cremosa.", "temperatura": ["caliente"] },
+    { "id": 54, "nombre": "Mocca", "precio": 2.00, "foto": "assets/images/menu/Mocca.jpg", "descripcion": "La combinación perfecta de espresso y chocolate oscuro.", "temperatura": ["caliente"] },
+    { "id": 55, "nombre": "Frappe Clásico", "precio": 2.00, "foto": "assets/images/menu/Frappe.jpg", "descripcion": "Café licuado con hielo y leche, con crema batida.", "temperatura": ["frio"] },
+    { "id": 56, "nombre": "Chocolate Caliente", "precio": 2.00, "foto": "assets/images/menu/Chocolate.avif", "descripcion": "Elaborado con cacao puro y leche cremosa.", "temperatura": ["caliente"] }
   ],
   "burgers": [
     { "id": 57, "nombre": "Classic Cheeseburger", "precio": 3.50, "foto": "assets/images/menu/HamburguesaClasica.jpg", "descripcion": "Medallón de res, queso cheddar, lechuga, tomate y salsa." },

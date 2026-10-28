@@ -65,6 +65,76 @@
         </div>
       </section>
 
+            <!-- BUSCADOR Y BOTÓN DE FILTROS RESPONSIVE -->
+      <div class="container my-4">
+          <!-- Contenedor Flexbox-->
+          <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+              
+              <!-- Barra de búsqueda -->
+              <div class="d-flex align-items-center bg-light rounded-pill p-1 shadow-sm w-100" style="border: 1px solid #e0e0e0; max-width: 600px;">
+                  <input type="text" id="inputBuscador" class="form-control border-0 bg-transparent shadow-none ms-2" placeholder="Buscar platillo o categoría...">
+                  
+                  <button class="btn d-flex justify-content-center align-items-center p-0 border-0 bg-transparent" style="width: 40px; height: 40px; min-width: 40px;">
+                      <img src="assets/images/busqueda/busqueda.png" alt="Buscar" width="28" height="28">
+                  </button>
+              </div>
+
+              <!-- Botón Filtros -->
+              <button class="btn bg-light rounded-pill fw-bold d-inline-flex align-items-center justify-content-center gap-2 px-4 py-2 shadow-sm flex-shrink-0" data-bs-toggle="modal" data-bs-target="#modalFiltros" style="border: 1px solid #0d6efd; color: #000; min-width: 120px;">
+                  Filtros
+                  <img src="assets/images/busqueda/filtro.png" alt="Icono Filtro" width="18" height="18">
+              </button>
+
+          </div>
+      </div>
+
+                        <!-- MODAL DE FILTROS -->
+      <div class="modal fade" id="modalFiltros" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content" style="border-radius: 16px; border: 2px solid #0d6efd;">
+                  
+                  <!-- Cabecera -->
+                  <div class="modal-header border-0 pb-0 align-items-center">
+                      <button type="button" class="btn-close m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <h4 class="modal-title w-100 text-center fw-bold m-0" style="padding-left: 20px;">Filtros</h4>
+                      <button type="button" class="btn btn-link text-decoration-none text-dark fw-bold p-0" id="btnRestablecer" style="font-size: 0.9rem;">Restablecer</button>
+                  </div>
+                  
+                  <!-- Cuerpo con las opciones -->
+                  <div class="modal-body px-4 py-3">
+                      
+                      <h5 class="fw-bold mb-3">Categoría</h5>
+                      <div class="d-flex flex-wrap gap-2 mb-4">
+                          <button class="btn btn-pill-filtro" data-filtro="desayunos">Desayunos</button>
+                          <button class="btn btn-pill-filtro" data-filtro="lunch">Lunch</button>
+                          <button class="btn btn-pill-filtro" data-filtro="pizzas">Pizzas</button>
+                          <button class="btn btn-pill-filtro" data-filtro="bebidas">Bebidas</button>
+                          <button class="btn btn-pill-filtro" data-filtro="postres">Postres</button>
+                          <button class="btn btn-pill-filtro" data-filtro="snacks">Snacks</button>
+                          <button class="btn btn-pill-filtro" data-filtro="tipica">Tipicas</button>
+                          <button class="btn btn-pill-filtro" data-filtro="burgers">Hamburguesas y Sandwiches</button>
+                          <button class="btn btn-pill-filtro" data-filtro="bowls">Bowls</button>
+                      </div>
+
+                      <!-- INNOVACIÓN: Sección oculta que solo aparece al seleccionar Bebidas -->
+                      <div id="seccion-temperatura" style="display: none;">
+                          <hr>
+                          <h5 class="fw-bold mb-3 mt-2">Temperatura</h5>
+                          <div class="d-flex flex-wrap gap-2 mb-2">
+                              <button class="btn btn-pill-filtro" data-tag="caliente">Caliente</button>
+                              <button class="btn btn-pill-filtro" data-tag="frio">Frío</button>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Botón Aplicar -->
+                  <div class="modal-footer border-0 pt-0 px-4 pb-4">
+                      <button type="button" class="btn w-100 rounded-pill text-white fw-bold py-3 fs-5" id="btnAplicarFiltros" data-bs-dismiss="modal" style="background-color: #e50050;">Aplicar</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
       <!-- MENU -->
       <section class="container-fluid px-lg-5 px-3 menu-section">
 
@@ -152,6 +222,10 @@
     <script src="js/comida.js"></script>
     <!-- Carrito -->
     <script src="js/carrito.js"></script>
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Logica-->
+    <script src="js/buscador.js"></script>
 
     <!-- Carga de componentes -->
     <script>
