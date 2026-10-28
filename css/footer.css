@@ -1,31 +1,78 @@
+/*======================VARIABLES======================*/
+:root {
+  --footer-red-color: #9B2226;
+  --footer-gray-color: #D9D9D9;
+  --footer-white-color: #FFFFFF;
+}
+/* Estilos principales del footer */
 .footer-main {
-  background-color: var(--color-hero-bg);
-  color: var(--color-dark);
+  background-color: var(--footer-red-color);
+  background-image:
+  radial-gradient(circle, rgba(255, 255, 255, .3) 1px, transparent 2px),
+  radial-gradient(circle, rgba(255, 255, 255, .2) 2px, transparent 3px);
+  background-size:80px 80px,120px 120px;
+  background-position:0 0,40px 40px;
+  color: var(--footer-white-color);
   padding: 60px 0 30px;
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
-  box-shadow: inset 0 10px 10px -10px var(--color-dark);
+  box-shadow: inset 0 10px 10px -10px var(--footer-white-color);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Efectos de luces de navidad en el borde superior */
+.footer-main::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  z-index: 2;
+  background:
+    radial-gradient(circle, #7de3ff 0 4px, transparent 5px) 0 0/40px 25px repeat-x,
+    radial-gradient(circle, #ff6b6b 0 4px, transparent 5px) 10px 0/40px 25px repeat-x,
+    radial-gradient(circle, #ffee32 0 4px, transparent 5px) 20px 0/40px 25px repeat-x,
+    radial-gradient(circle, #66ff99 0 4px, transparent 5px) 30px 0/40px 25px repeat-x;
+  animation: lucesNavidad 1.5s infinite alternate;
+}
 
+/* Animación de encendido y apagado para las luces de navidad */
+@keyframes lucesNavidad {
+  from {
+    opacity: .7;
+  }
+
+  to {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+}
+
+/* Titulos de las secciones del footer */
 .footer-heading {
   margin-bottom: 20px;
-  font-weight: bold;
+
+
 }
 
+/* Enlaces y navegación */
 .footer-links a {
   display: inline-block;
   text-decoration: none;
-  color: var(--color-dark);
+  color: var(--footer-white-color);
   margin-bottom: 12px;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* Efecto al pasar el mouse sobre los enlaces y desplazamiento lateral */
 .footer-links a:hover {
-  color: var(--color-primary);
+  color: var(--footer-gray-color);
   transform: translateX(5px);
 }
 
+/* Redes sociales e iconos */
 .social-icon {
   display: inline-block;
   transition: transform 0.3s ease;
@@ -40,11 +87,12 @@
   width: 35px;
 }
 
+/* Linea separadora */
 .footer-divider {
   width: 90%;
   margin: 30px auto;
   opacity: 0.2;
-  border-color: var(--color-dark);
+  border-color: var(--footer-white-color);
 }
 
 /*============================= PARTE RESPONSIVE =============================*/

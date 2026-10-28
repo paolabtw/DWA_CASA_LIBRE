@@ -1,7 +1,6 @@
 :root {
-  --color-hero-bg: #D5CFC1;
-  --color-primary: #1D4443;
-  --color-dark: #000000;
+  --nav-red-color: #7E0200;
+  --nav-white-color: #FFFFFF;
 }
 
 header {
@@ -13,14 +12,15 @@ header {
 
 .navbar-custom {
   /* Forzamos el color de fondo para que NUNCA sea transparente */
-  background-color: var(--color-hero-bg) !important; 
+  background-color: var(--nav-red-color) !important; 
   min-height: var(--navbar-height);
   display: flex;
   align-items: center;
 }
 
+
 .brand-text {
-  color: var(--color-dark);
+  color: var(--nav-white-color);
   font-family: var(--font-heading); 
   font-size: 2rem;
   letter-spacing: 1px;
@@ -29,8 +29,25 @@ header {
   text-decoration: none;
 }
 
+/* ❄️ Copos de nieve decorativos */
+.navbar-custom::before {
+  content: "❄️ ❄️ ❄️";
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  font-size: 1.2rem;
+  opacity: 0.6;
+  animation: snowfall 6s linear infinite;
+}
+
+@keyframes snowfall {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(15px); }
+}
+
+
 .nav-link {
-  color: var(--color-dark);
+  color: var(--nav-white-color);
   font-family: var(--font-body); 
   font-size: 1.1rem;
   text-transform: uppercase;
@@ -48,13 +65,13 @@ header {
   left: 0.75rem;
   right: 0.75rem;
   width: 0;
-  background-color: var(--color-primary);
+  background-color: var(--nav-white-color);
   transition: width var(--transition);
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-primary) !important;
+  color: var(--nav-white-color) !important;
 }
 
 .nav-link:hover::after,
@@ -74,12 +91,12 @@ header {
 /* Ajuste para el toggler (hamburguesa) en móviles */
 .navbar-toggler {
   border: none;
-  color: var(--color-dark);
+  color: var(--nav-white-color);
 }
 
 .navbar-toggler:focus {
   box-shadow: none;
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--nav-white-color);
 }
 
 /* =============================================
@@ -105,7 +122,7 @@ header {
   .table-responsive tr {
     display: flex;
     flex-direction: column;
-    border: 1px solid #ddd;
+    border: 1px solid var(--nav-white-color);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 0.5rem;
@@ -117,7 +134,7 @@ header {
     align-items: center;
     padding: 0.75rem 0 !important;
     border: none !important;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--nav-white-color) !important;
   }
 
   .table-responsive td:last-child {
@@ -128,7 +145,7 @@ header {
     content: attr(data-label);
     font-weight: bold;
     min-width: 100px;
-    color: #1D4443;
+    color: var(--nav-red-color);
   }
 
   .table-responsive td:nth-child(1)::before {
