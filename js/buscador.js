@@ -4,7 +4,18 @@ $(document).ready(function() {
     // 1. LÓGICA DEL BUSCADOR DE TEXTO
     // ==========================================
     $('#inputBuscador').on('keyup', function() {
-        let textoBusqueda = $(this).val().toLowerCase();
+        // Obtenemos el texto y usamos .trim() para ignorar espacios en blanco extra
+        let textoBusqueda = $(this).val().toLowerCase().trim();
+        
+        // SOLUCIÓN AL ERROR: Si el buscador queda vacío, mostramos todo de inmediato
+        if (textoBusqueda === '') {
+            $('.card').show();
+            $('section.mb-5').show();
+            
+            // Si el usuario tenía algún filtro del modal activo, lo respetamos y lo volvemos a aplicar
+            $('#btnAplicarFiltros').click();
+            return; // Detenemos la función aquí para que no siga ocultando cosas
+        }
         
         // PASO A: Ocultar/Mostrar los platillos individuales
         $('.card').each(function() {
@@ -20,14 +31,11 @@ $(document).ready(function() {
 
         // PASO B: Ocultar/Mostrar las categorías completas (Títulos)
         $('section.mb-5').each(function() {
-            // Contamos cuántas tarjetas quedaron visibles dentro de esta categoría específica
             let tarjetasVisibles = $(this).find('.card:visible').length;
             
             if (tarjetasVisibles === 0) {
-                // Si no hay platillos visibles, ocultamos toda la sección (título incluido)
                 $(this).hide();
             } else {
-                // Si hay al menos un platillo, mostramos la sección
                 $(this).show();
             }
         });
@@ -43,8 +51,9 @@ $(document).ready(function() {
     // Botón "Restablecer"
     $('#btnRestablecer').on('click', function() {
         $('.btn-pill-filtro').removeClass('active');
-        $('section.mb-5').show(); // Mostramos todas las categorías
-        $('.card').show(); // Mostramos todos los platillos
+        $('#inputBuscador').val(''); // También limpiamos la barra de texto
+        $('section.mb-5').show(); 
+        $('.card').show(); 
     });
 
     // Botón "Aplicar"
