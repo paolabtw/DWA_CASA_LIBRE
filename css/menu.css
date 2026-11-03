@@ -12,12 +12,11 @@
 }
 
 :root {
-  --color-dark: #000000;
-  --color-light: #FFFFFF;
-
-  --color-menu-text: #9B2226;
-  --color-scroll-track: #D5CFC1;
-
+  --menu-black-color: #000000;
+  --menu-white-color: #FFFFFF;
+  --menu-red-color: #9B2226;
+  --menu-gray-color: #D5CFC1;
+  --menu-light-gray-color: #f2f2f2;
   --font-heading: 'Anton', sans-serif;
   --font-body: 'JetBrains Mono', monospace;
 
@@ -43,7 +42,7 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  background-color: var(--color-light);
+  background-color: var(--menu-white-color);
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
@@ -70,14 +69,14 @@ main {
   width: 100%;
   margin: 0;
   padding: 110px 20px 90px;
-  background: var(--color-menu-text);
-  color: var(--color-light);
+  background: var(--menu-red-color);
+  color: var(--menu-white-color);
   text-align: center;
 }
 
 .section-title {
   margin-bottom: 20px;
-  color: var(--color-light);
+  color: var(--menu-white-color);
   font-size: 60px;
   letter-spacing: 3px;
 }
@@ -85,7 +84,7 @@ main {
 .menu-hero .menu-description {
   max-width: 800px;
   margin: 0 auto;
-  color: var(--color-light);
+  color: var(--menu-white-color);
   font-size: 1.05rem;
 }
 
@@ -98,7 +97,7 @@ main {
 .menu-section h2 {
   margin-bottom: 15px;
   text-align: center;
-  color: var(--color-menu-text);
+  color: var(--menu-red-color);
   font-size: 50px;
   letter-spacing: 4px;
 }
@@ -106,7 +105,7 @@ main {
 .menu-description {
   margin-bottom: 30px;
   text-align: center;
-  color: var(--color-dark);
+  color: var(--menu-black-color);
 }
 
 /*=========================== SCROLL CARDS ===========================*/
@@ -126,12 +125,12 @@ main {
 }
 
 .cards-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-menu-text);
+  background: var(--menu-red-color);
   border-radius: 10px;
 }
 
 .cards-scroll::-webkit-scrollbar-track {
-  background: var(--color-scroll-track);
+  background: var(--menu-gray-color);
 }
 
 /*=========================== CARD ===========================*/
@@ -144,7 +143,7 @@ main {
   overflow: hidden;
   border: none;
   border-radius: 25px;
-  background: var(--color-light);
+  background: var(--menu-white-color);
   box-shadow: var(--shadow);
   transition: transform var(--transition), box-shadow var(--transition);
 
@@ -186,7 +185,7 @@ main {
   align-items: center;
   gap: 10px;
   margin-bottom: 15px;
-  color: var(--color-menu-text);
+  color: var(--menu-red-color);
   font-size: 28px;
 }
 
@@ -194,11 +193,11 @@ main {
   /* Se estira para ocupar el espacio libre, empujando el botón hacia abajo */
   flex-grow: 1;
   margin-bottom: 0;
-  color: var(--color-dark);
+  color: var(--menu-black-color);
 }
 
 .menu-item span {
-  color: var(--color-dark);
+  color: var(--menu-black-color);
   font-size: 24px;
   font-weight: bold;
 }
@@ -280,7 +279,7 @@ main {
   transform: translateX(-50%);
   padding: 12px 22px;
   border-radius: 12px;
-  color: white;
+  color: var(--menu-white-color);
   font-size: 15px;
   font-weight: 500;
   z-index: 99999;
@@ -316,8 +315,8 @@ main {
   padding: 14px;
   border: none;
   border-radius: 14px;
-  background: var(--color-menu-text);
-  color: white;
+  background: var(--menu-red-color);
+  color: var(--menu-white-color);
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
@@ -330,10 +329,10 @@ main {
 
 /* ============= Estilos para los botones del modal de filtros ============= */
 .btn-pill-filtro {
-    background-color: #f2f2f2;
-    border: 1px solid #f2f2f2;
+    background-color: var(--menu-light-gray-color);
+    border: 1px solid var(--menu-light-gray-color);
     border-radius: 20px;
-    color: #000;
+    color: var(--menu-black-color);
     font-weight: 600;
     padding: 6px 16px;
     font-size: 0.95rem;
@@ -341,11 +340,11 @@ main {
 }
 
 .btn-pill-filtro:hover {
-    background-color: #e2e2e2;
+    background-color: var(--menu-gray-color);
 }
 
 .btn-pill-filtro.active {
-    background-color: #fff;
-    border-color: #000; /* Borde oscuro al seleccionarlo */
-    color: #000;
+    background-color: var(--menu-white-color);
+    border-color: var(--menu-black-color); /* Borde oscuro al seleccionarlo */
+    color: var(--menu-black-color);
 }
