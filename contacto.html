@@ -121,26 +121,26 @@
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label for="nombre" class="form-label">Nombre</label>
-                      <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre completo" autocomplete="name" />
+                      <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre completo" autocomplete="name" required />
                     </div>
 
                     <div class="col-md-6">
                       <label for="correo" class="form-label">Correo electrónico</label>
-                      <input type="email" id="correo" name="correo" class="form-control" placeholder="tucorreo@ejemplo.com" autocomplete="email" />
+                      <input type="email" id="correo" name="correo" class="form-control" placeholder="tucorreo@ejemplo.com" autocomplete="email" required />
                     </div>
 
                     <div class="col-12">
                       <label for="asunto" class="form-label">Asunto</label>
-                      <input type="text" id="asunto" name="asunto" class="form-control" placeholder="¿En qué podemos ayudarte?" />
+                      <input type="text" id="asunto" name="asunto" class="form-control" placeholder="¿En qué podemos ayudarte?" required />
                     </div>
 
                     <div class="col-12">
                       <label for="mensaje" class="form-label">Mensaje</label>
-                      <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Cuéntanos todo..."></textarea>
+                      <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Cuéntanos todo..." required></textarea>
                     </div>
 
                     <div class="col-12">
-                      <label for="form-enviado" class="btn-enviar" role="button" tabindex="0">Enviar mensaje</label>
+                      <button type="submit" class="btn-enviar">Enviar mensaje</button>
                     </div>
                   </div>
                 </form>
@@ -228,6 +228,35 @@
 
     loadHTML("navbar-placeholder", "navbar.html");
     loadHTML("footer-placeholder", "footer.html");
+
+    // VALIDACIÓN DEL FORMULARIO: requiere nombre, correo, asunto y mensaje antes de mostrar la confirmación.
+    const contactForm = document.querySelector(".form-contenido form");
+    const formSentToggle = document.getElementById("form-enviado");
+    const requiredFields = contactForm.querySelectorAll("[required]");
+
+    requiredFields.forEach((field) => {
+      field.addEventListener("input", () => field.setCustomValidity(""));
+    });
+
+    formSentToggle.addEventListener("change", () => {
+      if (!formSentToggle.checked) {
+        contactForm.reset();
+        requiredFields.forEach((field) => field.setCustomValidity(""));
+      }
+    });
+
+    contactForm.addEventListener("submit", (event) => {
+      const emptyField = Array.from(requiredFields).find((field) => !field.value.trim());
+      if (emptyField) {
+        event.preventDefault();
+        emptyField.setCustomValidity("Completa este campo.");
+        emptyField.reportValidity();
+        return;
+      }
+
+      event.preventDefault();
+      formSentToggle.checked = true;
+    });
   </script>
   <script src="js/carrito.js"></script>
 </body>

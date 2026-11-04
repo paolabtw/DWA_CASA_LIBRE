@@ -50,6 +50,8 @@
                                 <h3 class="h4 mb-4 text-uppercase">Datos del Cliente</h3>
                                 
                                 <form id="paymentForm" novalidate>
+                                    <div id="paymentError" class="alert alert-danger d-none" role="alert"></div>
+                                    <!-- VALIDACIÓN DE CLIENTE: nombre, teléfono y dirección son obligatorios. -->
                                     <div class="mb-3">
                                         <label for="clientName" class="form-label">Nombre completo</label>
                                         <input type="text" id="clientName" class="form-control" required pattern="[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]+" title="Solo letras y espacios">
@@ -58,8 +60,8 @@
 
                                     <div class="mb-3">
                                         <label for="clientPhone" class="form-label">Teléfono</label>
-                                        <input type="text" id="clientPhone" class="form-control" placeholder="0000-0000" maxlength="9" autocomplete="off" />
-                                        <div class="invalid-feedback">Por favor ingresa un teléfono válido usando solo números.</div>
+                                        <input type="text" id="clientPhone" class="form-control" placeholder="0000-0000" inputmode="numeric" maxlength="9" autocomplete="off" required />
+                                        <div class="invalid-feedback">Por favor ingresa un teléfono válido en formato 0000-0000.</div>
                                     </div>
 
                                     <div class="mb-3">
@@ -76,24 +78,26 @@
                                             <option value="Transferencia">Transferencia Bancaria</option>
                                             <option value="Efectivo">Efectivo</option>
                                         </select>
+                                        <div class="invalid-feedback">Por favor selecciona un método de pago.</div>
                                     </div>
 
+                                    <!-- VALIDACIÓN Y FORMATO DE TARJETA: número, vencimiento MM/AA y CVV. -->
                                     <div id="cardFields" class="p-3 bg-light rounded-3 mb-4" style="display:none;">
                                         <div class="mb-3">
                                             <label for="cardNumber" class="form-label">Número de tarjeta</label>
-                                            <input type="text" id="cardNumber" class="form-control" placeholder="0000 0000 0000 0000" inputmode="numeric" pattern="\d{16}" title="16 dígitos">
+                                            <input type="text" id="cardNumber" class="form-control" placeholder="0000 0000 0000 0000" inputmode="numeric" maxlength="19" pattern="\d{4}( \d{4}){3}" title="16 dígitos">
                                             <div class="invalid-feedback">Por favor ingresa un número de tarjeta válido de 16 dígitos.</div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="cardExpiry" class="form-label">Fecha vencimiento</label>
-                                                <input type="text" id="cardExpiry" class="form-control" placeholder="MM/AA" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Formato MM/AA">
+                                                <input type="text" id="cardExpiry" class="form-control" placeholder="MM/AA" inputmode="numeric" maxlength="5" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Formato MM/AA">
                                                 <div class="invalid-feedback">Por favor ingresa una fecha de vencimiento válida en formato MM/AA.</div>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="cardCvv" class="form-label">CVV</label>
-                                                <input type="password" id="cardCvv" class="form-control" placeholder="123" maxlength="4" pattern="\d{3,4}" title="3 o 4 dígitos">
-                                                <div class="invalid-feedback">Por favor ingresa un CVV válido de 3 o 4 dígitos.</div>
+                                                <input type="password" id="cardCvv" class="form-control" placeholder="123" maxlength="3" inputmode="numeric" pattern="\d{3}" title="3 dígitos">
+                                                <div class="invalid-feedback">Por favor ingresa un CVV de 3 dígitos.</div>
                                             </div>
                                         </div>
                                     </div>
