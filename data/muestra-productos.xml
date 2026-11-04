@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogo moneda="USD">
+  <categoria nombre="desayunos">
+    <producto id="1">
+      <nombre>Pancakes</nombre>
+      <precio>2.50</precio>
+      <imagen>assets/images/menu/Pancakes.webp</imagen>
+      <descripcion>Tres unidades acompañadas de miel de maple.</descripcion>
+    </producto>
+  </categoria>
+
+  <categoria nombre="pizzas">
+    <producto id="15">
+      <nombre>Pizza Pepperoni</nombre>
+      <imagen>assets/images/menu/PizzaPeperoni.webp</imagen>
+      <descripcion>Queso mozzarella y pepperoni.</descripcion>
+      <opciones>
+        <opcion nombre="Personal, 4 porciones" precio="6.50" />
+        <opcion nombre="Grande, 8 porciones" precio="11.00" />
+      </opciones>
+    </producto>
+  </categoria>
+
+  <categoria nombre="cafe">
+    <producto id="50">
+      <nombre>Café Americano</nombre>
+      <precio>2.00</precio>
+      <imagen>assets/images/menu/BlackCoffee.jpg</imagen>
+      <descripcion>Expreso doble diluido en agua caliente. Equilibrado, suave y aromático.</descripcion>
+    </producto>
+  </categoria>
+</catalogo>
