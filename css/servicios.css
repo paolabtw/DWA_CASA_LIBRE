@@ -12,12 +12,11 @@
 }
 
 :root {
-  --color-light: #FFFFFF;
-  --color-dark: #000000;
-  --color-servicios-title: #42181F;
-  --color-servicios-text: #1F2263;
-
-  --color-btn-text: #D5CFC1;
+  --services-white-color: #FFFFFF;
+  --services-black-color: #000000;
+  --services-green-color: #1D4443;
+  --services-brown-color: #42181F;
+  --services-gray-color: #D5CFC1;
 
   --font-heading: 'Anton', sans-serif;
   --font-body: 'JetBrains Mono', monospace;
@@ -39,7 +38,7 @@ html {
 
 body {
   overflow-x: hidden;
-  background-color: var(--color-light);
+  background-color: var(--services-white-color);
   font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.4;
@@ -52,37 +51,55 @@ h1,h2,h3,h4,h5,h6,
 
 /*=========================== SERVICIOS ===========================*/
 .servicios-intro{
-  background-color:  var(--color-btn-text);
-  color: var(--color-servicios-text);
+  background-color:  var(--services-gray-color);
+  color: var(--services-brown-color);
 
 }
 .servicios-section {
-  color: var(--color-servicios-text);
+  color: var(--services-brown-color);
 
 }
 
 .servicios-title {
-  color: var(--color-servicios-title);
+  color: var(--services-green-color);
 }
 
 /*=========================== CARRUSEL ===========================*/
-
+/* Inversión de iconos de control del carrusel (flechas) */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   filter: invert(1);
 }
 
+/* Efecto al pasar el cursor sobre las flechas de navegación */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  transform: scale(1.2);
+}
 .service-img {
   max-height: 200px;
   object-fit: contain;
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
+
+.service-img:hover {
+  transform: scale(1.05) translateY(-4px);
+}
+
+/* Suavizado general para la transición entre elementos del carrusel */
+.carousel-item {
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
 /*=========================== BOTÓN ===========================*/
 .btn-servicios {
   display: inline-block;
   border-radius: var(--radius);
-  background-color: var(--color-servicios-text);
-  color: var(--color-btn-text);
+  background-color: var(--services-brown-color);
+  color: var(--services-white-color);
   font-family: var(--font-heading);
   text-transform: uppercase;
   text-decoration: none;
@@ -92,6 +109,6 @@ h1,h2,h3,h4,h5,h6,
 .btn-servicios:hover {
   transform: scale(1.05);
   filter: brightness(1.2);
-  box-shadow: 0 10px 20px var(--color-servicios-text);
-  color: var(--color-servicios-text);
+  box-shadow: 0 10px 20px var(--services-brown-color);
+  color: var(--services-brown-color);
 }

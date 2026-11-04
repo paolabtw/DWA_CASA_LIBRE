@@ -12,18 +12,17 @@
 }
 
 :root {
-  --color-light: #FFFFFF;
-  --color-dark: #000000;
-  --color-primary: #1D4443;      
-
-  --color-payment-text: #42181F; 
-  --color-payment-bg: #F8F5F1;       
+  --payment-white-color: #FFFFFF;
+  --payment-black-color: #000000;
+  --payment-green-color: #1D4443;      
+  --payment-red-color: #7E0200; 
+  --payment-gray-color: #F8F5F1;       
 
   --font-heading: 'Anton', sans-serif;
   --font-body: 'JetBrains Mono', monospace;
 
   --navbar-height: 80px;
-  --radius: 20px;
+  --radius:20px;
 }
 
 /*=========================== BASE ===========================*/
@@ -35,11 +34,11 @@
 
 body {
   overflow-x: hidden;
-  background-color: var(--color-payment-bg);
+  background-color: var(--payment-gray-color);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.5;
-  color: var(--color-dark);
+  color: var(--payment-black-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -50,8 +49,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Cabecera del Título */
 .page-header {
-  background-color: var(--color-payment-text);
-  color: var(--color-light);
+  background-color: var(--payment-red-color);
+  color: var(--payment-white-color);
+}
+
+.page-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: 1px;
 }
 
 
@@ -59,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 .form-label {
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--color-dark) ;
+  color: var(--payment-black-color);
   margin-bottom: 0.5rem;
 }
 
@@ -72,15 +76,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-control:focus, .form-select:focus {
-  border-color: var(--color-primary);
+  border-color: var(--payment-green-color);
   box-shadow: 0 0 0 3px rgba(29, 68, 67, 0.15);
   outline: none;
 }
 
 /* Botón de Pago Personalizado */
 .btn-payment {
-  background-color: var(--color-primary);
-  color: var(--color-light);
+  background-color: var(--payment-green-color);
+  color: var(--payment-white-color);
   font-family: var(--font-heading);
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -91,15 +95,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-payment:hover {
-  background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  transform: scale(1.02);
+  box-shadow: 0 10px 20px var(--payment-green-color);
+  color: var(--payment-green-color);
 }
 
 /* Resumen del pedido */
 .total-amount {
-  color: var(--color-payment-text);
+  color: var(--payment-green-color);
 }
 
 /* Clases de utilidad para los bloques dinámicos de JS */
