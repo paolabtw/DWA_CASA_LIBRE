@@ -65,6 +65,57 @@ h1,h2,h3,h4,h5,h6,
 }
 
 /*=========================== CARRUSEL ===========================*/
+/* DECORACIÓN DE CARRUSELES: borde rojo, sombra verde y efecto rebote al pasar el cursor */
+.servicios-carousel {
+  height: 500px;
+  border: 3px solid #b5232f;
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 3px var(--services-green-color), 0 10px 24px rgba(37, 255, 121, 0.8);
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.servicios-carousel .carousel-inner {
+  width: 100%;
+}
+
+.servicios-carousel:hover {
+  animation: servicios-carousel-rebote 0.7s ease-out;
+}
+
+@keyframes servicios-carousel-rebote {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  35% {
+    transform: scale(1.04);
+  }
+
+  60% {
+    transform: scale(0.99);
+  }
+
+  82% {
+    transform: scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servicios-carousel:hover {
+    animation: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .servicios-carousel {
+    height: 540px;
+    padding: 1.5rem 1.25rem;
+  }
+}
+
 /* Inversión de iconos de control del carrusel (flechas) */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {

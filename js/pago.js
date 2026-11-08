@@ -10,9 +10,20 @@ const clientAddressField = document.querySelector('#clientAddress');
 const cardNumberField = document.querySelector('#cardNumber');
 const cardExpiryField = document.querySelector('#cardExpiry');
 const cardCvvField = document.querySelector('#cardCvv');
+const paymentError = document.querySelector('#paymentError');
 
-let products =
-    JSON.parse(localStorage.getItem('checkoutProducts')) || [];
+let products = [];
+
+function showPaymentError(message, error) {
+    console.error(message, error);
+    paymentError.textContent = message;
+    paymentError.classList.remove('d-none');
+}
+
+function clearPaymentError() {
+    paymentError.textContent = '';
+    paymentError.classList.add('d-none');
+}
 
 function loadProducts() {
 
@@ -52,18 +63,28 @@ function loadProducts() {
 
 }
 
-loadProducts();
+// MANEJO DE ERRORES: captura problemas al leer o mostrar el resumen guardado.
+try {
+    const storedProducts = localStorage.getItem('checkoutProducts');
+    products = storedProducts ? JSON.parse(storedProducts) : [];
+    if (!Array.isArray(products)) {
+        throw new Error('El resumen de compra guardado no tiene un formato válido.');
+    }
+    loadProducts();
+} catch (error) {
+    showPaymentError('No se pudo cargar el resumen de la compra. Actualiza la página e inténtalo de nuevo.', error);
+}
 
 function validateTextOnly(value) {
     return /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]+$/.test(value.trim());
 }
 
-function validatePhoneOnly(value) {
-    return /^\d+$/.test(value.trim());
+function validatePhone(value) {
+    return /^\d{4}-\d{4}$/.test(value.trim());
 }
 
 function validateCardNumber(value) {
-    const digits = value.replace(/\s+/g, '');
+    const digits = value.replace(/\D/g, '');
     return /^\d{16}$/.test(digits);
 }
 
@@ -72,7 +93,45 @@ function validateCardExpiry(value) {
 }
 
 function validateCardCvv(value) {
-    return /^\d{3,4}$/.test(value.trim());
+    return /^\d{3}$/.test(value.trim());
+}
+
+// FORMATO DE VALIDACIONES: agrupa teléfono y tarjeta, y limita la entrada del CVV.
+function formatGroupedDigits(field, maxDigits, groupSize, separator) {
+    const cursor = field.selectionStart;
+    const digitsBeforeCursor = field.value.slice(0, cursor).replace(/\D/g, '').length;
+    const digits = field.value.replace(/\D/g, '').slice(0, maxDigits);
+    const formattedValue = digits.match(new RegExp(`.{1,${groupSize}}`, 'g'))?.join(separator) || '';
+
+    field.value = formattedValue;
+
+    let newCursor = 0;
+    let digitsCounted = 0;
+    while (newCursor < formattedValue.length && digitsCounted < digitsBeforeCursor) {
+        if (/\d/.test(formattedValue[newCursor])) digitsCounted += 1;
+        newCursor += 1;
+    }
+    field.setSelectionRange(newCursor, newCursor);
+}
+
+function limitToDigits(field, maxDigits) {
+    field.value = field.value.replace(/\D/g, '').slice(0, maxDigits);
+}
+
+// FORMATO DE VENCIMIENTO: inserta automáticamente la barra después de los dos dígitos del mes.
+function formatCardExpiry(field) {
+    const cursor = field.selectionStart;
+    const digitsBeforeCursor = field.value.slice(0, cursor).replace(/\D/g, '').length;
+    const digits = field.value.replace(/\D/g, '').slice(0, 4);
+    const formattedValue = digits.length >= 2
+        ? `${digits.slice(0, 2)}/${digits.slice(2)}`
+        : digits;
+
+    field.value = formattedValue;
+    const newCursor = digitsBeforeCursor < 2
+        ? digitsBeforeCursor
+        : Math.min(3 + digitsBeforeCursor - 2, formattedValue.length);
+    field.setSelectionRange(newCursor, newCursor);
 }
 
 function setInvalidField(field, message) {
@@ -88,8 +147,29 @@ function clearFieldState(field) {
 }
 
 function clearAllFieldStates() {
-    [clientNameField, clientPhoneField, clientAddressField, cardNumberField, cardExpiryField, cardCvvField].forEach(clearFieldState);
+    [clientNameField, clientPhoneField, clientAddressField, paymentMethod, cardNumberField, cardExpiryField, cardCvvField].forEach(clearFieldState);
 }
+
+// VALIDACIONES DE DATOS DEL CLIENTE: formato obligatorio del teléfono y entradas de tarjeta.
+clientPhoneField.addEventListener('input', () => {
+    formatGroupedDigits(clientPhoneField, 8, 4, '-');
+    clearFieldState(clientPhoneField);
+});
+
+cardNumberField.addEventListener('input', () => {
+    formatGroupedDigits(cardNumberField, 16, 4, ' ');
+    clearFieldState(cardNumberField);
+});
+
+cardExpiryField.addEventListener('input', () => {
+    formatCardExpiry(cardExpiryField);
+    clearFieldState(cardExpiryField);
+});
+
+cardCvvField.addEventListener('input', () => {
+    limitToDigits(cardCvvField, 3);
+    clearFieldState(cardCvvField);
+});
 
 paymentMethod.addEventListener('change', () => {
 
@@ -97,6 +177,7 @@ paymentMethod.addEventListener('change', () => {
 
     cardFields.style.display = 'none';
     transferFields.style.display = 'none';
+    clearFieldState(paymentMethod);
 
     if (value === 'Tarjeta') {
 
@@ -112,24 +193,37 @@ paymentMethod.addEventListener('change', () => {
 
 });
 
-paymentForm.addEventListener('submit', async function(e) {
+// VALIDACIÓN AL PAGAR: verifica datos obligatorios del cliente y los campos de tarjeta seleccionados.
+paymentForm.addEventListener('submit', function(e) {
+
     e.preventDefault();
+    clearPaymentError();
 
     clearAllFieldStates();
 
-    const clientName = clientNameField.value;
-    const clientPhone = clientPhoneField.value;
-    const clientAddress = clientAddressField.value;
+    const clientName = clientNameField.value.trim();
+    const clientPhone = clientPhoneField.value.trim();
+    const clientAddress = clientAddressField.value.trim();
 
     let isValid = true;
 
-    if (!validateTextOnly(clientName)) {
+    if (!clientName || !validateTextOnly(clientName)) {
         setInvalidField(clientNameField, 'Por favor ingresa un nombre completo válido (sin números).');
         isValid = false;
     }
 
-    if (!validatePhoneOnly(clientPhone)) {
-        setInvalidField(clientPhoneField, 'Por favor ingresa un teléfono válido (solo números).');
+    if (!validatePhone(clientPhone)) {
+        setInvalidField(clientPhoneField, 'Por favor ingresa un teléfono válido en formato 0000-0000.');
+        isValid = false;
+    }
+
+    if (!clientAddress) {
+        setInvalidField(clientAddressField, 'Por favor ingresa una dirección válida.');
+        isValid = false;
+    }
+
+    if (!paymentMethod.value) {
+        setInvalidField(paymentMethod, 'Por favor selecciona un método de pago.');
         isValid = false;
     }
 
@@ -145,7 +239,7 @@ paymentForm.addEventListener('submit', async function(e) {
         }
 
         if (!validateCardCvv(cardCvvField.value)) {
-            setInvalidField(cardCvvField, 'Por favor ingresa un CVV válido de 3 o 4 dígitos.');
+            setInvalidField(cardCvvField, 'Por favor ingresa un CVV de 3 dígitos.');
             isValid = false;
         }
     }
@@ -154,6 +248,8 @@ paymentForm.addEventListener('submit', async function(e) {
         return;
     }
 
+    // MANEJO DE ERRORES: captura fallos al generar la factura o procesar el cierre de compra.
+    try {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -361,4 +457,8 @@ paymentForm.addEventListener('submit', async function(e) {
     setTimeout(() => {
         window.location.href = 'menu.html';
     }, 1000);
+    } catch (error) {
+        showPaymentError('No se pudo generar la factura ni completar la compra. Inténtalo de nuevo.', error);
+    }
+
 });
